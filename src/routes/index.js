@@ -4,7 +4,8 @@ const router = Router();
 
 
 router.use('/', (req,res,next)=>{
-    res.send("prueba").catch(e=>next(e))
+   res.send("prueba")
+    
 })
 
 
