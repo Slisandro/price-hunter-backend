@@ -3,7 +3,9 @@ const router = Router();
 
 
 router.use('/', (req,res,next)=>{
-    return res.send("prueba");
+
+   res.send("prueba")
+
 })
 
 
