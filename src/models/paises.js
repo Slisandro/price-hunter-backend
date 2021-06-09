@@ -2,7 +2,8 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return equelize.define('paises'),{
+    return sequelize.define('paises'),
+    {
         codigo_alfa:{
             type: DataTypes.STRING,
             allowNull: false,
