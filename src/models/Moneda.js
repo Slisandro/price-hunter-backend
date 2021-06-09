@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injertamos la conexión a sequelize.
 module.exports = (sequelize) => {
     // defino el modelo
-    return sequelize.define('monedas', {
+    return sequelize.define('moneda', {
         codigo_moneda: { // codigo_moneda es obligatorio, único. === id tabla
             type: DataTypes.STRING,
             allowNull: false,
