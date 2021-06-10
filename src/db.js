@@ -69,6 +69,8 @@ Desafios.belongsToMany(Ciudad, { through: "desafioCiudad" });
 Ciudad.belongsToMany(Desafios, { through: "desafioCiudad" });
 // final  relaciones de muchos a muchos --------------------------->
 
+Ciudad.hasMany(Clientes);//-------
+
 // inicio relaciones uno a muchos --------------------------------->
 // relación tipos de usuarios 
 Tipo_usuario.hasMany(Usuarios);
@@ -76,7 +78,6 @@ Tipo_usuario.hasMany(Clientes);
 Tipo_usuario.hasMany(Desafios);
 // relación ciudad
 Ciudad.hasMany(Usuarios);
-Ciudad.hasMany(Clientes);
 // relación países 
 Paises.hasMany(Ciudad);
 // relación desafíos
