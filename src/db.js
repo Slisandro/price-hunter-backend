@@ -117,7 +117,7 @@ Categoria.belongsTo(Familia)
 
 // inicio relaciones uno a uno --------------------------------->
 Paises.hasOne(Moneda)
-Moneda.belongsTo(Paisess)
+Moneda.belongsTo(Paises)
 // final relaciones uno a uno ---------------------------------->
 
 
