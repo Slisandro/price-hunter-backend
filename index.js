@@ -18,7 +18,7 @@ conn.sync({ force: true })
     Unidad_medida.bulkCreate(unidades).then(console.log('Carga de datos correcta unidades'))
     Tipo_usuario.bulkCreate(tipo_usuarios).then(console.log('Carga de datos correcta tipo_usuarios'))
     Familia.bulkCreate(familias).then(console.log('Carga de datos correcta Familia'))
-    // Categoria.bulkCreate(categorias).then(console.log('Carga de datos correcta categorias'))
+    Categoria.bulkCreate(categorias).then(console.log('Carga de datos correcta categorias'))
     // Subcategoria.bulkCreate(subcategoria).then(console.log('Carga de datos correcta subcategoria'))
     // Productos.bulkCreate(productos).then(console.log('Carga de datos correcta productos'))
     
