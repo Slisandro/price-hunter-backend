@@ -49,7 +49,8 @@ const {
   Precio, Moneda, Familia, Categoria,
   Ciudad, Clientes, Desafios, Paises,
   Productos, Subcategoria, Tipo_usuario,
-  Unidad_medida, Usuarios, // el archivo unidadesmedida.js exporta Unidad_medida
+  Unidad_medida, Usuarios, Detalle, Regiones, Generos
+ // el archivo unidadesmedida.js exporta Unidad_medida
 } = sequelize.models;
 
 //------------------------------------//
@@ -59,8 +60,9 @@ const {
 
 // inicio  relaciones de muchos a muchos -------------------------->
 // relación de muchos a muchos de precios a usuarios
-Precio.belongsToMany(Usuarios, { through: "precioUsuario" });
-Usuarios.belongsToMany(Precio, { through: "precioUsuario" });
+// Precio.belongsToMany(Usuarios, { through: "precioUsuario" });
+// Usuarios.belongsToMany(Precio, { through: "precioUsuario" });
+
 // relación de muchos a muchos de usuarios a desafíos
 Desafios.belongsToMany(Usuarios, { through: "desafioUsuario" });
 Usuarios.belongsToMany(Desafios, { through: "desafioUsuario" });
@@ -77,8 +79,8 @@ Usuarios.belongsTo(Tipo_usuario)
 Tipo_usuario.hasMany(Clientes);
 Clientes.belongsTo(Tipo_usuario)
 
-Tipo_usuario.hasMany(Desafios);
-Desafios.belongsTo(Tipo_usuario);
+// Tipo_usuario.hasMany(Desafios);
+// Desafios.belongsTo(Tipo_usuario);
 
 // relación ciudad
 Ciudad.hasMany(Usuarios);
@@ -96,8 +98,22 @@ Desafios.belongsTo(Clientes)
 Desafios.hasMany(Precio);
 Precio.belongsTo(Desafios)
 
+Desafios.hasMany(Detalle);
+Detalle.belongsTo(Desafios)
+
+Ciudad.hasMany(Detalle);
+Detalle.belongsTo(Ciudad)
+
 Productos.hasMany(Desafios);
 Desafios.belongsTo(Productos)
+
+Tipo_usuario.hasMany(Clientes);
+Clientes.belongsTo(Tipo_usuario)
+
+
+//--realcion region paises---//
+Regiones.hasMany(Paises);
+Paises.belongsTo(Regiones)
 
 // relación productos y categorías
 Unidad_medida.hasMany(Productos);
@@ -109,13 +125,20 @@ Productos.belongsTo(Subcategoria)
 Categoria.hasMany(Subcategoria);
 Subcategoria.belongsTo(Categoria)
 
+Generos.hasMany(Usuarios);
+Usuarios.belongsTo(Generos)
+
 Familia.hasMany(Categoria);
 Categoria.belongsTo(Familia)
+
+
+Usuarios.hasMany(Precio);
+Precio.belongsTo(Usuarios);
+
 // final relaciones uno a muchos ---------------------------------->
 
 // inicio relaciones uno a uno --------------------------------->
-Paises.hasOne(Moneda)
-Moneda.belongsTo(Paisess)
+Moneda.hasOne(Paises)
 // final relaciones uno a uno ---------------------------------->
 
 

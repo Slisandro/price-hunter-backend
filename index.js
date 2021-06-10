@@ -1,8 +1,9 @@
 
 const server = require('./src/app.js');
 const {conn} = require("./src/db");
-const {unidades, tipo_usuarios, familias, categorias, subcategoria, productos} = require("./src/datos")
-const {Unidad_medida, Tipo_usuario, Familia, Categoria, Subcategoria, Productos} = require("./src/db");
+const {unidades, tipo_usuarios, familias, categorias, subcategoria, productos, desafios, clientes, regiones, monedas, paises, generos, usuarios, detalle_desafios, precios} = require("./src/datos");
+const {ciudades} = require("./src/datosciudades")
+const {Unidad_medida, Tipo_usuario, Familia, Categoria, Subcategoria, Productos, Desafios, Clientes, Regiones, Moneda, Paises, Ciudad, Generos, Usuarios, Detalle, Precio} = require("./src/db");
 
 
 
@@ -22,6 +23,17 @@ conn.sync({ force: true })
     await Categoria.bulkCreate(categorias).then(console.log('Carga de datos correcta categorias'))
     await Subcategoria.bulkCreate(subcategoria).then(console.log('Carga de datos correcta subcategoria'))
     await Productos.bulkCreate(productos).then(console.log('Carga de datos correcta productos'))
+    await Regiones.bulkCreate(regiones).then(console.log('Carga de datos correcta regiones'))
+    await Moneda.bulkCreate(monedas).then(console.log('Carga de datos correcta monedas'))
+    await Paises.bulkCreate(paises).then(console.log('Carga de datos correcta paises'))
+    await Ciudad.bulkCreate(ciudades).then(console.log('Carga de datos correcta ciudades'))
+    await Generos.bulkCreate(generos).then(console.log('Carga de datos correcta generos'))
+    await Usuarios.bulkCreate(usuarios).then(console.log('Carga de datos correcta usuarios'))
+    await Clientes.bulkCreate(clientes).then(console.log('Carga de datos correcta clientes'))
+    await Desafios.bulkCreate(desafios).then(console.log('Carga de datos correcta desafios'))
+    await Detalle.bulkCreate(detalle_desafios).then(console.log('Carga de datos correcta detalle_desafios'))
+    await Precio.bulkCreate(precios).then(console.log('Carga de datos correcta precios'))
+
     
 
     server.listen(3001, ()=>{
