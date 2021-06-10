@@ -2,7 +2,8 @@
 const server = require('./src/app.js');
 const {conn} = require("./src/db");
 const {unidades, tipo_usuarios, familias, categorias, subcategoria, productos} = require("./src/datos")
-const {Unidad_medida, Tipo_usuario, Familia, Categoria, Subcategoria, Productos} = require("./src/db")
+const {Unidad_medida, Tipo_usuario, Familia, Categoria, Subcategoria, Productos} = require("./src/db");
+
 
 
 
@@ -12,18 +13,18 @@ const {Unidad_medida, Tipo_usuario, Familia, Categoria, Subcategoria, Productos}
 //-------------------------------------------------------------------//
 
 conn.sync({ force: true })
-.then(()=>{
+.then(async ()=>{
 
     //----------CARGAMOS LOS DATOS FAKE A LA DB------------//
-    Unidad_medida.bulkCreate(unidades).then(console.log('Carga de datos correcta unidades'))
-    Tipo_usuario.bulkCreate(tipo_usuarios).then(console.log('Carga de datos correcta tipo_usuarios'))
-    Familia.bulkCreate(familias).then(console.log('Carga de datos correcta Familia'))
-    // Categoria.bulkCreate(categorias).then(console.log('Carga de datos correcta categorias'))
-    // Subcategoria.bulkCreate(subcategoria).then(console.log('Carga de datos correcta subcategoria'))
-    // Productos.bulkCreate(productos).then(console.log('Carga de datos correcta productos'))
+    await Unidad_medida.bulkCreate(unidades).then(console.log('Carga de datos correcta unidades'))
+    await Tipo_usuario.bulkCreate(tipo_usuarios).then(console.log('Carga de datos correcta tipo_usuarios'))
+    await Familia.bulkCreate(familias).then(console.log('Carga de datos correcta Familia'))
+    await Categoria.bulkCreate(categorias).then(console.log('Carga de datos correcta categorias'))
+    await Subcategoria.bulkCreate(subcategoria).then(console.log('Carga de datos correcta subcategoria'))
+    await Productos.bulkCreate(productos).then(console.log('Carga de datos correcta productos'))
     
 
     server.listen(3001, ()=>{
         console.log("listen at 3001")
     })
-})
+}).catch(error => console.log(error))
