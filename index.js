@@ -28,3 +28,4 @@ conn.sync({ force: true })
         console.log("listen at 3001")
     })
 }).catch(error => console.log(error))
+
