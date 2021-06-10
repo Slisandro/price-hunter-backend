@@ -1,12 +1,9 @@
 const { Router } = require('express');
 const router = Router();
+const Productos = require("./productos")
 
 
-router.use('/', (req,res,next)=>{
-
-   res.send("prueba")
-
-})
+router.use('/', Productos)
 
 
 module.exports = router;

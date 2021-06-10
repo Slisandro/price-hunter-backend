@@ -2,8 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('paises'),
-    {
+    return sequelize.define('paises',{
         codigo_alfa:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,5 +20,5 @@ module.exports = (sequelize) => {
         //     allowNull: false,
         //     unique: true,
         // },
-    };
+    });
 }

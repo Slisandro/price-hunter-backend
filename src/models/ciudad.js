@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('ciudad'),{
+    return sequelize.define('ciudad',{
         codigo_postal:{
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -19,5 +19,5 @@ module.exports = (sequelize) => {
         //     allowNull: false,
         //     unique: true,
         // },
-    };
+    });
 }

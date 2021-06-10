@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('subcategoria'),{
+    return sequelize.define('subcategoria',{
         nombre_subcategoria:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -10,14 +10,8 @@ module.exports = (sequelize) => {
         },  
         descripcion:{
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: false,
         },
-
-        // id_categoria:{
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     unique: true,
-        // },
-    };
+    });
 }

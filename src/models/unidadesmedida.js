@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('unidad_medida'),{
+    return sequelize.define('unidad_medida',{
         codigo_unidad_medida:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -14,5 +14,5 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: true,
         },
-    };
+    });
 };
