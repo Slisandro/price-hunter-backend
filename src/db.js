@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,DB_NAME
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 } = process.env;
 
 //------------------------------------//
@@ -18,8 +18,8 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 //---------Compruevo conección--------//
 //------------------------------------//
 sequelize.authenticate()
-.then(()=>{console.log('success')})
-.catch((e)=>{console.log(e)});
+  .then(() => { console.log('success') })
+  .catch((e) => { console.log(e) });
 
 //------------------------------------//
 //--------Carga de los modelos--------//
@@ -45,15 +45,57 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Ejemplo, } = sequelize.models;
+const {
+  Precio, Moneda, Familia, Categoria,
+  Ciudad, Clientes, Desafios, Paises,
+  Productos, Subcategoria, Tipo_usuario,
+  Unidad_medida, Usuarios, // el archivo unidadesmedida.js exporta Unidad_medida
+} = sequelize.models;
 
 //------------------------------------//
 //------Relaciones entre Modelos------//
 //------------------------------------//
-        //los tenemos que hacer//
+//los tenemos que hacer//
+
+// inicio  relaciones de muchos a muchos -------------------------->
+// relación de muchos a muchos de precios a usuarios
+Precio.belongsToMany(Usuarios, { through: "precioUsuario" });
+Usuarios.belongsToMany(Precio, { through: "precioUsuario" });
+// relación de muchos a muchos de usuarios a desafíos
+Desafios.belongsToMany(Usuarios, { through: "desafioUsuario" });
+Usuarios.belongsToMany(Desafios, { through: "desafioUsuario" });
+// relación de muchos a muchos de desafíos a ciudades
+Desafios.belongsToMany(Ciudad, { through: "desafioCiudad" });
+Ciudad.belongsToMany(Desafios, { through: "desafioCiudad" });
+// final  relaciones de muchos a muchos --------------------------->
+
+// inicio relaciones uno a muchos --------------------------------->
+// relación tipos de usuarios 
+Tipo_usuario.hasMany(Usuarios);
+Tipo_usuario.hasMany(Clientes);
+Tipo_usuario.hasMany(Desafios);
+// relación ciudad
+Ciudad.hasMany(Usuarios);
+Ciudad.hasMany(Clientes);
+// relación países 
+Paises.hasMany(Ciudad);
+// relación desafíos
+Clientes.hasMany(Desafios);
+Desafios.hasMany(Precio);
+Productos.hasMany(Desafios);
+// relación productos y categorías
+Unidad_medida.hasMany(Productos);
+Subcategoria.hasMany(Productos);
+Categoria.hasMany(Subcategoria);
+Familia.hasMany(Categoria);
+// final relaciones uno a muchos ---------------------------------->
+
+// inicio relaciones uno a uno --------------------------------->
+Paises.belongsTo(Moneda)
+// final relaciones uno a uno ---------------------------------->
 
 
 module.exports = {
-    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-    conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
-  };
+  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+};
