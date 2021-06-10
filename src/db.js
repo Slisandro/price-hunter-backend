@@ -82,7 +82,9 @@ Paises.hasMany(Ciudad);
 // relación desafíos
 Clientes.hasMany(Desafios);
 Desafios.hasMany(Precio);
+
 Productos.hasMany(Desafios);
+Desafios.belongsTo(Productos);
 // relación productos y categorías
 Unidad_medida.hasMany(Productos);
 Subcategoria.hasMany(Productos);
