@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
         nombre_subcategoria:{
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
+            // unique: true,
         },  
         descripcion:{
             type: DataTypes.STRING,
