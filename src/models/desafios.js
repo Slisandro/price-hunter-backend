@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('desafios'),{
+    return sequelize.define('desafios',{
         nombre_desafio:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -42,5 +42,5 @@ module.exports = (sequelize) => {
             unique: false,
         },
 
-    };
+    });
 };

@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('categoria'),{
+    return sequelize.define('categoria',{
         nombre_categoria:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -10,14 +10,8 @@ module.exports = (sequelize) => {
         },  
         descripcion:{
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: false,
         },
-
-        // id_familia:{
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     unique: true,
-        // },
-    };
+    });
 }

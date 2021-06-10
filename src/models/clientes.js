@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('clientes'),{
+    return sequelize.define('clientes',{
         razon_social:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -58,5 +58,5 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: true,
         },      
-    };
+    });
 };
