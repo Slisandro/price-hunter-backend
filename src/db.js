@@ -74,25 +74,50 @@ Ciudad.hasMany(Clientes);//-------
 // inicio relaciones uno a muchos --------------------------------->
 // relación tipos de usuarios 
 Tipo_usuario.hasMany(Usuarios);
+Usuarios.belongsTo(Tipo_usuario)
+
 Tipo_usuario.hasMany(Clientes);
+Clientes.belongsTo(Tipo_usuario)
+
 Tipo_usuario.hasMany(Desafios);
+Desafios.belongsTo(Tipo_usuario);
+
 // relación ciudad
 Ciudad.hasMany(Usuarios);
+Usuarios.belongsTo(Ciudad)
+
+Ciudad.hasMany(Clientes);
+Clientes.belongsTo(Ciudad)
 // relación países 
 Paises.hasMany(Ciudad);
+Ciudad.belongsTo(Paises)
 // relación desafíos
 Clientes.hasMany(Desafios);
+Desafios.belongsTo(Clientes)
+
 Desafios.hasMany(Precio);
+Precio.belongsTo(Desafios)
+
 Productos.hasMany(Desafios);
+Desafios.belongsTo(Productos)
+
 // relación productos y categorías
 Unidad_medida.hasMany(Productos);
+Productos.belongsTo(Unidad_medida)
+
 Subcategoria.hasMany(Productos);
+Productos.belongsTo(Subcategoria)
+
 Categoria.hasMany(Subcategoria);
+Subcategoria.belongsTo(Categoria)
+
 Familia.hasMany(Categoria);
+Categoria.belongsTo(Familia)
 // final relaciones uno a muchos ---------------------------------->
 
 // inicio relaciones uno a uno --------------------------------->
-Paises.belongsTo(Moneda)
+Paises.hasOne(Moneda)
+Moneda.belongsTo(Paisess)
 // final relaciones uno a uno ---------------------------------->
 
 
