@@ -199,15 +199,16 @@ const subcategoria =[
 ]
 
 const productos =[
-    {nombre: "arroz" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId: 42},
+    {nombre: "arroz" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId:42},
     {nombre: "papa" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId: 90},
     {nombre: "leche_normal" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "lt" , subcategoriumId: 63},
     {nombre: "huevos" , contenido_neto: 30 ,unidadMedidaCodigoUnidadMedida: "un" , subcategoriumId: 84},
     {nombre: "harina_trigo" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId: 62},
     {nombre: "café" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId: 25},
-    {nombre: "pan_tajado" , contenido_neto: 400 ,unidadMedidaCodigoUnidadMedida: "gm" , subcategoriumId: 35},
+    {nombre: "pan_tajado" , contenido_neto: 400 ,unidadMedidaCodigoUnidadMedida: "gr" , subcategoriumId: 35},
     {nombre: "azucar" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId: 21},
-    {nombre: "sal" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId: 10},
+    {nombre: "sal" , contenido_neto: 1 ,unidadMedidaCodigoUnidadMedida: "kg" , subcategoriumId: 10}
+    
 ]
 
 
