@@ -23,15 +23,12 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: false,
         },
-        //id producto
-        //id ciudad
-        //id cliente
-        puntos_ganar:{
+        id_producto:{
             type: DataTypes.INTEGER,
             allowNull: false,
             unique: false,
         },
-        cantidad_precios:{
+        id_cliente:{
             type: DataTypes.INTEGER,
             allowNull: false,
             unique: false,
@@ -41,6 +38,21 @@ module.exports = (sequelize) => {
             allowNull: true,
             unique: false,
         },
+        // id_ciudad:{
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     unique: false,
+        // },
+        // puntos_ganar:{
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     unique: false,
+        // },
+        // cantidad_precios:{
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     unique: false,
+        // },
 
     });
 };
