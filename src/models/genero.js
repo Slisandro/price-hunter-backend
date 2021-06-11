@@ -2,9 +2,9 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    return sequelize.define('ciudad',{
+    return sequelize.define('generos',{
 
-        Ciudad:{
+        genero:{
             type: DataTypes.STRING,
             allowNull: false,
             unique: false,
