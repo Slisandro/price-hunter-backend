@@ -1,34 +1,13 @@
 const {Productos, Precio, Desafios} = require('../db'); //fijarnos el nombre con que lo pone pablo.
 const axios = require ("axios");
 const { Op } = require("sequelize");
-// function productos(req,res,next){
 
-//     const nombre_input = req.query.name;  
-//     if(nombre_input !== undefined){
-//     Productos.findAll()
-//     .then(r =>{
-//         let array = []
-//         for(let i=0; i<r.length; i++){
-//             if(r[i].nombre.includes(nombre_input.toLowerCase())){
-//                 array.push({
-//                     nombre:r[i].nombre
-//                     // precio:???????????????????????
-//                 })
-//             }
-//         }
-//         res.send(array)
-//     })} else {
-//         Productos.findAll()
-//     .then(r =>{
-//         res.send(r)
-//     })}
 
-// }
 
 function productos(req,res,next){
-    const array_desafios=[]
+    
     const nombre_input = req.query.name;  
-    if(nombre_input!==undefined){
+    if(nombre_input!==undefined){  //condicion del front mandar id_subcategoria y/o mandar nombre_producto.
 
         const nombre_min = nombre_input.toLowerCase();
         Productos.findAll({
@@ -37,41 +16,40 @@ function productos(req,res,next){
                     [Op.substring]: `${nombre_min}`
                 }
             },
-            attributes:["nombre"], 
-            include:  Desafios
-            // {
-            //     model: Desafios,
-            //     attributes:["nombre_desafio"],
-            //     through: {
-            //         attributes: []
-            //     },
-            // }
+            attributes:["nombre"], //cont_neto , unidad_medida, id_sub_categoria
+            include:  
+            {
+                model: Desafios,
+                attributes:['nombre_desafio'],
+                include:
+                {
+                    model: Precio,
+                    attributes:['precio'], //fecha_captura  
+                }
+            }
         })
+        // .then((respuesta)=>{res.send(respuesta[0].desafios[0].precios)})
         .then((respuesta)=>{
-            res.send(respuesta)
-            // respuesta.forEach( async producto => {
-            //     const desafios = await Desafios.findAll({
-            //         where:{
-            //             productoId: producto.id
-            //         },
-            //         attributes:["nombre_desafio"], 
-            //         include: {
-            //             model: Productos,
-            //             attributes: ["nombre","contenido_neto"],
-            //             through: {
-            //               attributes: []
-            //             },
-            //         }
-            //     })
-            //     if(desafios.length>0){
-            //         array_desafios.push(desafios)
-            //     }
-            // });
             
+            const array_productos = [];
+
+            respuesta.forEach(producto => {
+                producto.desafios.forEach((desafio)=>{
+                    desafio.precios.forEach((precioo)=>{
+                        const obj = {
+                            precio: precioo.precio,
+                            desafio: desafio.nombre_desafio,
+                            preoducto: producto.nombre
+                        }
+                        array_productos.push(obj);
+                    })
+                })
+            });
+            return array_productos;
         })
+        .then((respuesta)=>{res.send(respuesta)})
         .catch((err)=>{next(err)});
         
-        // res.send(array_desafios)
                 
     } else {
         res.send('pasar un valor de busqueda')
@@ -82,3 +60,5 @@ function productos(req,res,next){
 module.exports = {
 productos,
 };
+
+
