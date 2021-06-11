@@ -9,7 +9,27 @@ async function addUsuarios(req, res, next) {
     let password = await bcrypt.hash(usuario.password, 10); //hago el cifrado de la contraseña ("es una promesa")
     // le paso la contraseña y el numero que me permite luego descifrarlo.
     try {
-
+        if (
+            usuario.nombre === undefined ||
+            usuario.apellido === undefined ||
+            usuario.fecha_de_nacimiento === undefined ||
+            usuario.email === undefined ||
+            usuario.password === undefined
+        ) {
+            return res.status(400).send({ msg: "error en los datos enviados" })
+        }
+        if (usuario.nombre.length < 3 ) {
+            return res.status(400).send({ msg: "error en nombre enviado" })
+        }
+        if (usuario.apellido.length < 2 ) {
+            return res.status(400).send({ msg: "error en apellido enviado" })
+        }
+        if (usuario.fecha_de_nacimiento.length < 3 ) {
+            return res.status(400).send({ msg: "error en la fecha enviada" })
+        }
+        if (usuario.password.length < 3 ) {
+            return res.status(400).send({ msg: "error en la contraseña enviado" })
+        }
         const nuevoUsuario = await Usuarios.create({
             nombre: usuario.nombre,
             apellido: usuario.apellido,
