@@ -1,5 +1,7 @@
 const { Clientes } = require('../db');
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken');
+const authConfig = require('../../config/auth');
 
 // registro de un nuevo cliente
 async function addClientes(req, res, next) {
@@ -20,8 +22,16 @@ async function addClientes(req, res, next) {
             numero_cuenta: cliente.numero_cuenta,
             password: password,
         });
+        // Creamos el token
+        let token = jwt.sign({ user: nuevoCliente }, authConfig.secret, {
+            expiresIn: authConfig.expires,
+        });
 
-        return res.send(nuevoCliente);// aca tengo que enviar el token
+        res.json({
+            cliente: nuevoCliente,
+            token: token
+        });
+        // return res.send(nuevoCliente);// aca tengo que enviar el token
     } catch (err) {
         next(err);
     }
@@ -37,15 +47,31 @@ async function logClientes(req, res, next) {
                 email: datos_cliente.email
             }
         })
-        !cliente ? (
+        if (!cliente) {
             res.status(404).send({ msg: "cliente con este correo no encontrado" })
-        ) : (
-            bcrypt.compareSync(datos_cliente.password, cliente.password) ? (
-                res.status(200).send(cliente)
-            ) : (
+        } else {
+            if (bcrypt.compareSync(datos_cliente.password, cliente.password)) {
+                // Creamos el token
+                let token = jwt.sign({ user: cliente }, authConfig.secret, {
+                    expiresIn: authConfig.expires
+                });
+                res.json({
+                    cliente: cliente,
+                    token: token
+                });
+            } else {
                 res.status(401).send({ msg: "Contraseña incorrecta" })
-            )
-        )
+            }
+        }
+        // !cliente ? (
+        //     res.status(404).send({ msg: "cliente con este correo no encontrado" })
+        // ) : (
+        //     bcrypt.compareSync(datos_cliente.password, cliente.password) ? (
+        //         res.status(200).send(cliente)
+        //     ) : (
+        //         res.status(401).send({ msg: "Contraseña incorrecta" })
+        //     )
+        // )
 
     } catch (error) {
         next(error)

@@ -1,5 +1,7 @@
 const { Usuarios } = require('../db');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const authConfig = require('../../config/auth');
 
 // registro de un nuevo usuario
 async function addUsuarios(req, res, next) {
@@ -22,7 +24,16 @@ async function addUsuarios(req, res, next) {
             email: usuario.email,
         });
 
-        return res.send(nuevoUsuario);// aca tengo que enviar el token
+        // Creamos el token
+        let token = jwt.sign({ user: nuevoUsuario }, authConfig.secret, {
+            expiresIn: authConfig.expires,
+        });
+
+        res.json({
+            usuario: nuevoUsuario,
+            token: token
+        });
+        // return res.send(nuevoUsuario);// aca tengo que enviar el token
     } catch (err) {
         next(err);
     }
@@ -38,15 +49,22 @@ async function logUsuario(req, res, next) {
                 email: datos_usuario.email
             }
         })
-        !usuario ? (
+        if (!usuario) {
             res.status(404).send({ msg: "Usuario con este correo no encontrado" })
-        ) : (
-            bcrypt.compareSync(datos_usuario.password, usuario.password) ? (
-                res.status(200).send(usuario)
-            ) : (
+        } else {
+            if (bcrypt.compareSync(datos_usuario.password, usuario.password)) {
+                // Creamos el token
+                let token = jwt.sign({ user: usuario }, authConfig.secret, {
+                    expiresIn: authConfig.expires
+                });
+                res.json({
+                    usuario: usuario,
+                    token: token
+                });
+            } else {
                 res.status(401).send({ msg: "Contraseña incorrecta" })
-            )
-        )
+            }
+        }
 
     } catch (error) {
         next(error)
