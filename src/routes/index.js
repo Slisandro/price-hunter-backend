@@ -9,9 +9,7 @@ const tipo_usuario = require('./tipo_usuarios');
 const paises = require('./paises');
 const monedas = require('./monedas');
 const ciudades = require('./ciudades');
-
-
-
+const clientes = require('./clientes')
 
 
 const router = Router();
@@ -26,9 +24,7 @@ router.use('/', tipo_usuario)
 router.use('/', paises)
 router.use('/', monedas)
 router.use('/', ciudades)
-
-
-
+router.use('/', clientes)
 
 
 module.exports = router;
