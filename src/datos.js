@@ -19,9 +19,9 @@ const tipo_usuarios = [
 ]
 
 const familias = [
-    {nombre_familia: "Almacén"},
-    {nombre_familia: "Frescos"},
-    {nombre_familia: "Bebidas"},
+    {nombre_familia: "Almacen", descripcion: 'productos secos'},
+    {nombre_familia: "Frescos", descripcion: 'productos refrigerados y congelados'},
+    {nombre_familia: "Bebidas", descripcion: 'refrescos, agua y licores'},
 ]
 
 const categorias = [
@@ -321,22 +321,22 @@ const precios = [
 ]
 
 const usuarios = [
-    {nombre: "Pedro" ,apellido: "Perez" , fecha_de_nacimiento: [2000, 12, 05] ,ciudadId: 1, generoId: 2, metodo_de_cobro: "PSE" , banco: "CITY-BANK" , numero_de_cuenta: "123456789" , tipoUsuarioId: 1, password: "abc1234"},
-    {nombre: "Juana" ,apellido: "Gomez" , fecha_de_nacimiento: [1998, 06, 13] ,ciudadId: 2, generoId: 1, metodo_de_cobro: "PSE" , banco: "DAVIVIENDA" , numero_de_cuenta: "654878911" , tipoUsuarioId: 1, password: "xyz6543"},
-    {nombre: "Mario" ,apellido: "Gonzalez" , fecha_de_nacimiento: [1996, 03, 26] ,ciudadId: 9, generoId: 2, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "258963147" , tipoUsuarioId: 1, password: "ASD658"},
-    {nombre: "Ana" ,apellido: "Vargas" , fecha_de_nacimiento: [2001, 04, 02] ,ciudadId: 19, generoId: 1, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "654321987" , tipoUsuarioId: 1, password: "OIU457"},
-    {nombre: "Nina" ,apellido: "Otalora" , fecha_de_nacimiento: [2005, 04, 02] ,ciudadId: 25, generoId: 1, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "951236478" , tipoUsuarioId: 1, password: "PÑL965"},
+    {nombre: "Pedro" ,apellido: "Perez" ,email:'pedroperez@correo.com', fecha_de_nacimiento: [2000, 12, 05] ,ciudadId: 1, generoId: 2, metodo_de_cobro: "PSE" , banco: "CITY-BANK" , numero_de_cuenta: "123456789" , tipoUsuarioId: 1, password: "abc1234"},
+    {nombre: "Juana" ,apellido: "Gomez" , email:'juanagomez@correo.com', fecha_de_nacimiento: [1998, 06, 13] ,ciudadId: 2, generoId: 1, metodo_de_cobro: "PSE" , banco: "DAVIVIENDA" , numero_de_cuenta: "654878911" , tipoUsuarioId: 1, password: "xyz6543"},
+    {nombre: "Mario" ,apellido: "Gonzalez" , email:'mariogonzalez@correo.com', fecha_de_nacimiento: [1996, 03, 26] ,ciudadId: 9, generoId: 2, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "258963147" , tipoUsuarioId: 1, password: "ASD658"},
+    {nombre: "Ana" ,apellido: "Vargas" , email:'analvargas@correo.com', fecha_de_nacimiento: [2001, 04, 02] ,ciudadId: 19, generoId: 1, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "654321987" , tipoUsuarioId: 1, password: "OIU457"},
+    {nombre: "Nina" ,apellido: "Otalora" , email:'ninaotalora@correo.com', fecha_de_nacimiento: [2005, 04, 02] ,ciudadId: 25, generoId: 1, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "951236478" , tipoUsuarioId: 1, password: "PÑL965"},
 ]
 
 const generos = [
     {genero: "femenino"},
     {genero: "masculino"},
-    {genero: "otro"},
+    {genero: "no binario"},
 ]
 
 const clientes =[
-    {razon_social: "Price Hunter Asociados ARG / COL" , nombre_cial_fantasia: "Price Hunter" ,cuit_nit_rut: "800123456" , telefono: "3112546025" ,direccion_fiscal: "cra 5 este 47 - 49", ciudadId: 1, metodo_pago: "PSE" , banco: "MERCADO PAGO" , numero_cuenta: "954786321" , tipoUsuarioId: 2, password: "phunter98756"},
-    {razon_social: "Soy Henry" , nombre_cial_fantasia: "Soy Henry" ,cuit_nit_rut: "800123654" , telefono: "121465488" ,direccion_fiscal: "calle p no 85 - 12", ciudadId: 1, metodo_pago: "PSE" , banco: "MERCADO PAGO" , numero_cuenta: "987412545" , tipoUsuarioId: 2, password: "soyhenry123"},
+    {razon_social: "Price Hunter Asociados ARG / COL" , nombre_cial_fantasia: "Price Hunter" ,cuit_nit_rut: "800123456" , email: 'pricehunter@correo.com', telefono: "3112546025" ,direccion_fiscal: "cra 5 este 47 - 49", ciudadId: 1, metodo_pago: "PSE" , banco: "MERCADO PAGO" , numero_cuenta: "954786321" , tipoUsuarioId: 2, password: "phunter98756"},
+    {razon_social: "Soy Henry" , nombre_cial_fantasia: "Soy Henry" ,cuit_nit_rut: "800123654" , email: 'soyhenry@correo.com',telefono: "121465488" ,direccion_fiscal: "calle p no 85 - 12", ciudadId: 1, metodo_pago: "PSE" , banco: "MERCADO PAGO" , numero_cuenta: "987412545" , tipoUsuarioId: 2, password: "soyhenry123"},
 ]
 
 const regiones = [
