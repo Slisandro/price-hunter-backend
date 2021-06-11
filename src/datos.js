@@ -826,9 +826,9 @@ const clientes =[
 ]
 
 const regiones = [
-  { nombre_region: "América del Sur" },
+  { nombre_region: "America del Sur" },
   { nombre_region: "Antillas/Caribe" },
-  { nombre_region: "Pacífico" },
+  { nombre_region: "Pacifico" },
 ];
 
 const monedas = [
