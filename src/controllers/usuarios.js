@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt')
 async function addUsuarios(req, res, next) {
     const usuario = req.body;
     let password = await bcrypt.hash(usuario.password, 10);
-    console.log(password)
     try {
 
         const nuevoUsuario = await Usuarios.create({
@@ -18,6 +17,7 @@ async function addUsuarios(req, res, next) {
             numero_de_cuenta: usuario.numero_de_cuenta,
             tipoUsuarioId: usuario.tipoUsuarioId,
             password: password,
+            email: usuario.email,
         });
 
         return res.send(nuevoUsuario);
