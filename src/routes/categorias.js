@@ -3,7 +3,7 @@ const { Router } = require('express');
 const router = Router();
 
 
-router.get('/', categorias) 
+router.get('/categorias', categorias) 
 
 
 module.exports = router;
