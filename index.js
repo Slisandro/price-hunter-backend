@@ -23,14 +23,6 @@ conn.sync({ force: true })
     await Categoria.bulkCreate(categorias).then(console.log('Carga de datos correcta categorias'))
     await Subcategoria.bulkCreate(subcategoria).then(console.log('Carga de datos correcta subcategoria'))
     await Productos.bulkCreate(productos).then(console.log('Carga de datos correcta productos'))
-<<<<<<< HEAD
-    await Moneda.bulkCreate(monedas).then(console.log('Carga de datos correcta Moneda'))
-    await Ciudad.bulkCreate(ciudades).then(console.log('Carga de datos correcta Ciudad'))
-
-
-    // await Precio.bulkCreate(precios).then(console.log('Carga de datos correcta Precio'))
-    await Paises.bulkCreate(paises).then(console.log('Carga de datos correcta Paises'))
-=======
     await Regiones.bulkCreate(regiones).then(console.log('Carga de datos correcta regiones'))
     await Moneda.bulkCreate(monedas).then(console.log('Carga de datos correcta monedas'))
     await Paises.bulkCreate(paises).then(console.log('Carga de datos correcta paises'))
@@ -43,7 +35,6 @@ conn.sync({ force: true })
     await Precio.bulkCreate(precios).then(console.log('Carga de datos correcta precios'))
 
     
->>>>>>> f8c553a9f6b8785162307114184596eebc236b2e
 
     server.listen(3001, ()=>{
         console.log("listen at 3001")
