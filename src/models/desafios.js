@@ -23,21 +23,21 @@ module.exports = (sequelize) => {
             allowNull: false,
             unique: false,
         },
-        id_producto:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            unique: false,
-        },
-        id_cliente:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            unique: false,
-        },
         url_image:{
             type: DataTypes.STRING,
             allowNull: true,
             unique: false,
         },
+        // id_producto:{
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     unique: false,
+        // },
+        // id_cliente:{
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     unique: false,
+        // },
         // id_ciudad:{
         //     type: DataTypes.INTEGER,
         //     allowNull: false,
