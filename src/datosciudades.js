@@ -1075,4 +1075,4 @@ const ciudades =[
     {Ciudad: "Maiquetía", paiseCodigoAlfa: "VEN"},
 ]
 
-module.exports={ciudades}
+module.exports = { ciudades };
