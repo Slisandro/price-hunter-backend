@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
         id_desafio:{
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true,
+            // unique: true,
         },
         id_ciudad:{
             type: DataTypes.INTEGER,
