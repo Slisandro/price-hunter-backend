@@ -65,9 +65,10 @@ async function subcategoria(req, res, next) {
       codigo_moneda: paises[0].dataValues.monedaCodigoMoneda,
     },
   });
+  console.log(moneda)
   res.send({
     id_subcategoria: subcategoria[0].dataValues.id,
-    usuario: { id: usuario[0].dataValues.id },
+    usuario_id: usuario[0].dataValues.id ,
     nombre_subcategoria: subcategoria[0].dataValues.nombre_subcategoria,
     ciudad: {
       id: ciudad[0].dataValues.id,
@@ -80,6 +81,7 @@ async function subcategoria(req, res, next) {
     moneda: {
       codigo: moneda[0].dataValues.codigo_moneda,
       nombre: moneda[0].dataValues.nombre_moneda,
+      simbolo: moneda[0].dataValues.simbolo,
     },
     productos: pro,
     precios: array,
