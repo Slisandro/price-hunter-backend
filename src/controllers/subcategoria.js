@@ -8,6 +8,17 @@ const {
   Paises,
 } = require("../db");
 
+
+/*****************************************************************************/
+
+/* ruta de busqueda:
+http://localhost:3001/subcategoria/id_subcategoria?id=id_tipo_de _usuario&idUsuario=id_usuario*/ 
+/* ruta de ejemplo:
+http://localhost:3001/subcategoria/42?id=1&idUsuario=5*/ 
+
+/*****************************************************************************/
+
+
 async function subcategoria(req, res, next) {
   let id_tipo_usuario = req.query.id; // Tipo de Usuario por query
   let id_usuario = parseInt(req.query.idUsuario); // Id de usuario por query
