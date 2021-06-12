@@ -13,6 +13,8 @@ const clientes = require('./clientes')
 const categoriA = require('./admin/post_categoria')
 const clienteS= require('./admin/post_clientes.js')
 const desafioS= require('./admin/post_desafio')
+const um= require('./admin/post_unidad_medida')
+const tipoUsuario= require('./admin/post_tipo_usuario')
 
 const router = Router();
 
@@ -30,5 +32,7 @@ router.use('/', clientes)
 router.use('/admin', categoriA)
 router.use('/admin', clienteS)
 router.use('/admin', desafioS)
+router.use('/admin', um)
+router.use('/admin', tipoUsuario)
 
 module.exports = router;
