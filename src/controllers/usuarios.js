@@ -6,8 +6,8 @@ const authConfig = require('../../config/auth');
 // registro de un nuevo usuario
 async function addUsuarios(req, res, next) {
     const usuario = req.body; //traigo el objeto del body a la variable usuario
-    let password = await bcrypt.hash(usuario.password, 10); //hago el cifrado de la contraseña ("es una promesa")
-    // le paso la contraseña y el numero que me permite luego descifrarlo.
+    let password = await bcrypt.hash(usuario.password, +authConfig.rounds); //hago el cifrado de la contraseña ("es una promesa")
+    // le paso la contraseña, le paso un numero con un signo de mas (+) para que esta variable sea un numero === number
     try {
         if (
             usuario.nombre === undefined ||

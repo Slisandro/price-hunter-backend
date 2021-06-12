@@ -6,8 +6,8 @@ const authConfig = require('../../config/auth');
 // registro de un nuevo cliente
 async function addClientes(req, res, next) {
     const cliente = req.body; //traigo el objeto del body a la variable cliente
-    let password = await bcrypt.hash(cliente.password, 10); //hago el cifrado de la contraseña ("es una promesa")
-    // le paso la contraseña y el numero que me permite luego descifrarlo.
+    let password = await bcrypt.hash(cliente.password, authConfig.rounds); //hago el cifrado de la contraseña ("es una promesa")
+    // le paso la contraseña 
     try {
 
         const nuevoCliente = await Clientes.create({
