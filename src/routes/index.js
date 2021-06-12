@@ -10,7 +10,8 @@ const paises = require('./paises');
 const monedas = require('./monedas');
 const ciudades = require('./ciudades');
 const clientes = require('./clientes')
-
+const categoriA = require('./admin/post_categoria')
+const clienteS= require('./admin/post_clientes.js')
 
 const router = Router();
 
@@ -25,6 +26,7 @@ router.use('/', paises)
 router.use('/', monedas)
 router.use('/', ciudades)
 router.use('/', clientes)
-
+router.use('/admin', categoriA)
+router.use('/admin', clienteS)
 
 module.exports = router;

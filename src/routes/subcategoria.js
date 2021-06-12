@@ -3,7 +3,7 @@ const { Router } = require('express');
 const router = Router();
 
 
-router.use('/subcategoria/:id', subcategoria)
+router.get('/subcategoria/:id', subcategoria)
 
 
 module.exports = router;
