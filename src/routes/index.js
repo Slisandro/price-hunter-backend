@@ -22,7 +22,7 @@ const router = Router();
 router.use('/', productos)
 router.use('/', categorias)
 router.use('/', subcategoria)
-router.use('/', usuarios)
+router.use('/', usuarios)//
 router.use('/', generos)
 router.use('/', unidad_medida)
 router.use('/', tipo_usuario)
@@ -32,5 +32,7 @@ router.use('/', ciudades)
 router.use('/', clientes)
 router.use('/', tipo_transaccion)
 router.use('/', transacciones)
+router.use('/', clientes)//
+
 
 module.exports = router;
