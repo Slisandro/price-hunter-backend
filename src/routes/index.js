@@ -10,6 +10,11 @@ const paises = require('./paises');
 const monedas = require('./monedas');
 const ciudades = require('./ciudades');
 const clientes = require('./clientes')
+const tipo_transaccion = require('./tipo_transaccion')
+const transacciones = require('./transacciones')
+
+
+
 
 
 const router = Router();
@@ -17,7 +22,7 @@ const router = Router();
 router.use('/', productos)
 router.use('/', categorias)
 router.use('/', subcategoria)
-router.use('/', usuarios)
+router.use('/', usuarios)//
 router.use('/', generos)
 router.use('/', unidad_medida)
 router.use('/', tipo_usuario)
@@ -25,6 +30,9 @@ router.use('/', paises)
 router.use('/', monedas)
 router.use('/', ciudades)
 router.use('/', clientes)
+router.use('/', tipo_transaccion)
+router.use('/', transacciones)
+router.use('/', clientes)//
 
 
 module.exports = router;
