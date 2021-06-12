@@ -16,6 +16,8 @@ const {
   usuarios,
   detalle_desafios,
   precios,
+  tipo_transaccion,
+  transacciones_puntos,
 } = require("./src/datos");
 const { ciudades } = require("./src/datosciudades");
 const {
@@ -35,6 +37,8 @@ const {
   Usuarios,
   Detalle,
   Precio,
+  Tipo_transaccion,
+  Transacciones,
 } = require("./src/db");
 
 //-------------------------------------------------------------------//
@@ -94,6 +98,13 @@ conn
     await Precio.bulkCreate(precios).then(
       console.log("Carga de datos correcta precios")
     );
+    await Tipo_transaccion.bulkCreate(tipo_transaccion).then(
+      console.log("Carga de datos correcta tipo_transaccion")
+    );
+    await Transacciones.bulkCreate(transacciones_puntos).then(
+      console.log("Carga de datos correcta transacciones_puntos")
+    );
+
 
     server.listen(3001, () => {
       console.log("listen at 3001");
