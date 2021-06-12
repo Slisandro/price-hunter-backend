@@ -17,14 +17,14 @@ const router = Router();
 router.use('/', productos)
 router.use('/', categorias)
 router.use('/', subcategoria)
-router.use('/', usuarios)
+router.use('/', usuarios)//
 router.use('/', generos)
 router.use('/', unidad_medida)
 router.use('/', tipo_usuario)
 router.use('/', paises)
 router.use('/', monedas)
 router.use('/', ciudades)
-router.use('/', clientes)
+router.use('/', clientes)//
 
 
 module.exports = router;
