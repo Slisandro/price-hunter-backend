@@ -2,7 +2,7 @@ const { Clientes } = require('../../db')
 
 async function clientes(req, res, next) {
  try {
-     const { razon_social, nombre_cial_fantasia, cuit_nit_rut, email, telefono, direccion_fiscal, metodo_pago, banco, numero_cuenta, password } = req.body
+     const { razon_social, nombre_cial_fantasia, cuit_nit_rut, email, telefono, direccion_fiscal, metodo_pago, banco, numero_cuenta, password, ciudadId, tipoUsuarioId } = req.body
      const categoria = await Clientes.create({
         razon_social,
         nombre_cial_fantasia,
@@ -13,7 +13,9 @@ async function clientes(req, res, next) {
         metodo_pago,
         banco,
         numero_cuenta,
-        password
+        password,
+        ciudadId,
+        tipoUsuarioId
      })     
      res.json(categoria)
  } catch (error) {

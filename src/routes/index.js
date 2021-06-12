@@ -12,6 +12,7 @@ const ciudades = require('./ciudades');
 const clientes = require('./clientes')
 const categoriA = require('./admin/post_categoria')
 const clienteS= require('./admin/post_clientes.js')
+const desafioS= require('./admin/post_desafio')
 
 const router = Router();
 
@@ -28,5 +29,6 @@ router.use('/', ciudades)
 router.use('/', clientes)
 router.use('/admin', categoriA)
 router.use('/admin', clienteS)
+router.use('/admin', desafioS)
 
 module.exports = router;
