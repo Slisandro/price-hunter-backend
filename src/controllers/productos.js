@@ -50,7 +50,7 @@ function productos(req,res,next){
                                 desafio: desafio.nombre_desafio,
                                 preoducto: producto.nombre,
                                 contenido_neto: producto.contenido_neto,
-                                unidad_medida: producto.unidad_medida
+                                unidad_medida: producto.unidad_medida.codigo_unidad_medida
                             }
                             array_productos.push(obj);
                         })
