@@ -36,9 +36,9 @@ async function subcategoria(req, res, next) {
       let pro = [];
       for (let i = 0; i < producto.length; i++) {
         pro.push({
-          nombre: producto[i].dataValues.nombre,
+          preoducto: producto[i].dataValues.nombre,
           contenido_neto: producto[i].dataValues.contenido_neto,
-          um: producto[i].dataValues.unidadMedidaCodigoUnidadMedida,
+          unidad_medida: producto[i].dataValues.unidadMedidaCodigoUnidadMedida,
         });
       }
 

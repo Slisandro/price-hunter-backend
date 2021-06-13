@@ -16,6 +16,7 @@ module.exports = (sequelize) => {
     contenido_neto: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      foreignKey: true
     },
     // unidad_medida: {          //-----------
     //   type: DataTypes.STRING,

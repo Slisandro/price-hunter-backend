@@ -5,7 +5,7 @@ const router = Router();
 //agregar middlerware para la restricción, para que este logeado 
 //router.get('/subcategoria/:id', middlerware, subcategoria) 
 
-router.use('/subcategoria/:id', subcategoria)
+router.get('/subcategoria/:id', subcategoria)
 
 
 module.exports = router;
