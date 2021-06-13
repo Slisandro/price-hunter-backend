@@ -11,6 +11,8 @@ const {
   Desafios,
   Familia,
   Subcategoria,
+  Tipo_transaccion,
+  Transacciones,
 } = require("../../db");
 
 // --------------FAMILIA--------------
@@ -208,6 +210,33 @@ async function desafio(req, res, next) {
     next(error);
   }
 }
+// --------------TIPO DE TRANSACCION--------------
+async function tipo_transaccion(req, res, next) {
+  try {
+    const { tipo_transaccion } = req.body;
+    const tipo_trans = await Tipo_transaccion.create({
+      tipo_transaccion,
+    });
+    res.json(tipo_trans);
+  } catch (error) {
+    next(error);
+  }
+}
+// --------------TRANSACCIONES--------------
+async function transacciones(req, res, next) {
+  try {
+    const { observacion, puntos, usuarioId, tipoTransaccionId } = req.body;
+    const trans = await Transacciones.create({
+      observacion,
+      puntos,
+      usuarioId,
+      tipoTransaccionId,
+    });
+    res.json(trans);
+  } catch (error) {
+    next(error);
+  }
+}
 
 module.exports = {
   categoria,
@@ -222,4 +251,6 @@ module.exports = {
   clientes,
   desafio,
   familia,
+  tipo_transaccion,
+  transacciones,
 };
