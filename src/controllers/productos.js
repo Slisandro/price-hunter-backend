@@ -4,15 +4,25 @@ const { Op } = require("sequelize");
 
 
 
-function productos(req,res,next){
-    
-    const nombre_input = req.query.name;  
-    if(nombre_input!==undefined){  //condicion del front mandar id_subcategoria y/o mandar nombre_producto.
+function productos(req, res, next) {
+    Precio.findAll({
+        where: { usuarioId: 1 },//aca el id del user / req.user.id
+    }).then(precios => {
+        console.log(precios.map(price => {
+            return price.dataValues
+        })
+        )
+    }
+    )
+
+
+    const nombre_input = req.query.name;
+    if (nombre_input !== undefined) {  //condicion del front mandar id_subcategoria y/o mandar nombre_producto.
 
         const nombre_min = nombre_input.toLowerCase();
         Productos.findAll({
-            where:{
-                nombre:{
+            where: {
+                nombre: {
                     [Op.substring]: `${nombre_min}`
                 }
             },
@@ -74,7 +84,7 @@ function productos(req,res,next){
 }
 
 module.exports = {
-productos,
+    productos,
 };
 
 

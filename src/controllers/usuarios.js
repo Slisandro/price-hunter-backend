@@ -18,19 +18,19 @@ async function addUsuarios(req, res, next) {
         ) {
             return res.status(400).send({ msg: "error en los datos enviados" })
         }
-        if (usuario.nombre.length < 3 ) {
+        if (usuario.nombre.length < 3) {
             return res.status(400).send({ msg: "error en nombre enviado" })
         }
-        if (usuario.apellido.length < 2 ) {
+        if (usuario.apellido.length < 2) {
             return res.status(400).send({ msg: "error en apellido enviado" })
         }
-        if (usuario.fecha_de_nacimiento.length < 3 ) {
+        if (usuario.fecha_de_nacimiento.length < 3) {
             return res.status(400).send({ msg: "error en la fecha enviada" })
         }
-        if (usuario.password.length < 3 ) {
+        if (usuario.password.length < 3) {
             return res.status(400).send({ msg: "error en la contraseña enviado" })
         }
-        const nuevoUsuario = await Usuarios.create({
+        Usuarios.create({
             nombre: usuario.nombre,
             apellido: usuario.apellido,
             fecha_de_nacimiento: usuario.fecha_de_nacimiento,
@@ -42,17 +42,18 @@ async function addUsuarios(req, res, next) {
             tipoUsuarioId: usuario.tipoUsuarioId,
             password: password,
             email: usuario.email,
-        });
+        }).then(user => {
+            // Creamos el token
+            let token = jwt.sign({ user: user }, authConfig.secret, {
+                expiresIn: authConfig.expires,
+            });
 
-        // Creamos el token
-        let token = jwt.sign({ user: nuevoUsuario }, authConfig.secret, {
-            expiresIn: authConfig.expires,
-        });
+            res.json({
+                user: user,
+                token: token
+            });
+        })
 
-        res.json({
-            usuario: nuevoUsuario,
-            token: token
-        });
         // return res.send(nuevoUsuario);// aca tengo que enviar el token
     } catch (err) {
         next(err);
@@ -61,30 +62,32 @@ async function addUsuarios(req, res, next) {
 
 // ingreso de un usuario
 async function logUsuario(req, res, next) {
+    // console.log(req.user);
     const datos_usuario = req.body;
     try {
 
-        const usuario = await Usuarios.findOne({
+        Usuarios.findOne({
             where: {
                 email: datos_usuario.email
             }
-        })
-        if (!usuario) {
-            res.status(404).send({ msg: "Usuario con este correo no encontrado" })
-        } else {
-            if (bcrypt.compareSync(datos_usuario.password, usuario.password)) {
-                // Creamos el token
-                let token = jwt.sign({ user: usuario }, authConfig.secret, {
-                    expiresIn: authConfig.expires
-                });
-                res.json({
-                    usuario: usuario,
-                    token: token
-                });
-            } else {
-                res.status(401).send({ msg: "Contraseña incorrecta" })
+        }).then(user => {
+            if (!user) {
+                res.status(404).send({ msg: "Usuario con este correo no encontrado" })
+            } else {//los usuarios pre cargados no se pueden hacer login porque su contraseña no esta codificada
+                if (bcrypt.compareSync(datos_usuario.password, user.password)) {
+                    // Creamos el token
+                    let token = jwt.sign({ user: user }, authConfig.secret, {
+                        expiresIn: authConfig.expires
+                    });
+                    res.json({
+                        user: user,
+                        token: token
+                    });
+                } else {
+                    res.status(401).send({ msg: "Contraseña incorrecta" })
+                }
             }
-        }
+        })
 
     } catch (error) {
         next(error)
