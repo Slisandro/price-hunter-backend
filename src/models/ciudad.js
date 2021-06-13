@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
 
     return sequelize.define('ciudad',{
 
-        Ciudad:{
+        ciudad:{
             type: DataTypes.STRING,
             allowNull: false,
             unique: false,
