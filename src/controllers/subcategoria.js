@@ -24,6 +24,7 @@ http://localhost:3001/subcategoria/42?id=1&idUsuario=5*/
 async function subcategoria(req, res, next){
 
   try {
+
     const {id} = req.params;
   
     const productos_array = await Subcategoria.findAll({
@@ -74,6 +75,8 @@ async function subcategoria(req, res, next){
     });
 
     res.status(200).send(productos_array_modificado)
+
+
 
   } catch (error) {
     next(error);
