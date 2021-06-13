@@ -1,4 +1,4 @@
-const {Productos, Precio, Desafios} = require('../db'); //fijarnos el nombre con que lo pone pablo.
+const {Productos, Precio, Desafios, Unidad_medida} = require('../db'); //fijarnos el nombre con que lo pone pablo.
 const axios = require ("axios");
 const { Op } = require("sequelize");
 
@@ -16,21 +16,29 @@ function productos(req,res,next){
                     [Op.substring]: `${nombre_min}`
                 }
             },
-            attributes:["nombre"], //cont_neto , unidad_medida, id_sub_categoria
-            include:  
-            {
-                model: Desafios,
-                attributes:['nombre_desafio'],
-                include:
+            attributes:["nombre", "contenido_neto"], //unidad_medida, id_sub_categoria
+           
+            include:[
+
                 {
-                    model: Precio,
-                    attributes:['precio'], //fecha_captura  
+                    model: Unidad_medida,
+                    attributes:['codigo_unidad_medida'],
+                },
+                {
+                    model: Desafios,
+                    attributes:['nombre_desafio'],
+                    include:
+                    {
+                        model: Precio,
+                        attributes:['precio'], //fecha_captura  
+                    }
                 }
-            }
+            ] 
         })
         // .then((respuesta)=>{res.send(respuesta[0].desafios[0].precios)})
         .then((respuesta)=>{
-            
+            // res.json(respuesta)
+
             const array_productos = [];
 
             respuesta.forEach(producto => {
@@ -39,12 +47,15 @@ function productos(req,res,next){
                         const obj = {
                             precio: precioo.precio,
                             desafio: desafio.nombre_desafio,
-                            preoducto: producto.nombre
+                            preoducto: producto.nombre,
+                            contenido_neto: producto.contenido_neto,
+                            unidad_medida: producto.unidad_medida
                         }
                         array_productos.push(obj);
                     })
                 })
             });
+
             return array_productos;
         })
         .then((respuesta)=>{res.send(respuesta)})
