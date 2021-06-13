@@ -12,6 +12,7 @@ const ciudades = require('./ciudades');
 const clientes = require('./clientes')
 const tipo_transaccion = require('./tipo_transaccion')
 const transacciones = require('./transacciones')
+const crear_producto = require("./crearproducto")
 
 
 
@@ -32,7 +33,8 @@ router.use('/', ciudades)
 router.use('/', clientes)
 router.use('/', tipo_transaccion)
 router.use('/', transacciones)
-router.use('/', clientes)//
+router.use('/', clientes)
+router.use('/', crear_producto)
 
 
 module.exports = router;
