@@ -15,6 +15,11 @@ const clienteS= require('./admin/post_clientes.js')
 const desafioS= require('./admin/post_desafio')
 const um= require('./admin/post_unidad_medida')
 const tipoUsuario= require('./admin/post_tipo_usuario')
+const genero= require('./admin/post_generos.js')
+const moneda= require('./admin/post_moneda.js')
+const ciudad= require('./admin/post_ciudad.js')
+const pais= require('./admin/post_pais.js')
+
 
 const router = Router();
 
@@ -34,5 +39,9 @@ router.use('/admin', clienteS)
 router.use('/admin', desafioS)
 router.use('/admin', um)
 router.use('/admin', tipoUsuario)
+router.use('/admin', genero)
+router.use('/admin', moneda)
+router.use('/admin', ciudad)
+router.use('/admin', pais)
 
 module.exports = router;
