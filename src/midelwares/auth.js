@@ -23,7 +23,6 @@ module.exports = (req, res, next) => {
                 // next();//el next es para que continue 
                 //revisar que solo trae un valor en lugar de traer muchos que coincidan.
                 Usuarios.findByPk(decoded.user.id, { 
-                    // where:{ paiseCodigoAlfa: "ARG"}
                 }).then(user => {
                     //console.log(user.roles);
                     req.user = user.dataValues;
