@@ -39,31 +39,36 @@ function productos(req,res,next){
         .then((respuesta)=>{
             // res.json(respuesta)
 
-            const array_productos = [];
-
-            respuesta.forEach(producto => {
-                producto.desafios.forEach((desafio)=>{
-                    desafio.precios.forEach((precioo)=>{
-                        const obj = {
-                            precio: precioo.precio,
-                            desafio: desafio.nombre_desafio,
-                            preoducto: producto.nombre,
-                            contenido_neto: producto.contenido_neto,
-                            unidad_medida: producto.unidad_medida
-                        }
-                        array_productos.push(obj);
+            if(respuesta.length>0){
+                const array_productos = [];
+    
+                respuesta.forEach(producto => {
+                    producto.desafios.forEach((desafio)=>{
+                        desafio.precios.forEach((precioo)=>{
+                            const obj = {
+                                precio: precioo.precio,
+                                desafio: desafio.nombre_desafio,
+                                preoducto: producto.nombre,
+                                contenido_neto: producto.contenido_neto,
+                                unidad_medida: producto.unidad_medida
+                            }
+                            array_productos.push(obj);
+                        })
                     })
-                })
-            });
+                });
+    
+                return array_productos;
+            }else{
+                return {msg:"No hay productos que contengan o coincidan con ese nombre"}
+            }
 
-            return array_productos;
         })
         .then((respuesta)=>{res.send(respuesta)})
         .catch((err)=>{next(err)});
         
                 
     } else {
-        res.send('pasar un valor de busqueda')
+        res.send({msg:'pasar un valor de busqueda'})
     }
 
 }

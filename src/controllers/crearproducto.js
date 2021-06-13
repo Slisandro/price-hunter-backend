@@ -19,7 +19,7 @@ async function Post_Producto(req,res,next){
     
         const producto_creado_encontrado = await Productos.findOrCreate({
             where:{
-                nombre: nombre,
+                nombre: nombre.toLowerCase(),
                 contenido_neto: contenido_neto,
                 unidadMedidaCodigoUnidadMedida: unidad_medida,
                 subcategoriumId:id_subcategoria
