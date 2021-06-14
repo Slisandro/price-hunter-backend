@@ -25,7 +25,7 @@ function radioLatLong (lat1, long1, lat2, long2, mtsTolerancia){
     let dif = dMts - mtsTolerancia
  
     return [dif, dMts];
-  }
+}
 
 
 function addPrecio (req, res, next){
