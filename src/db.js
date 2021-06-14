@@ -1,11 +1,9 @@
-require('dotenv').config();
-const { Sequelize } = require('sequelize');
-const fs = require('fs');
-const path = require('path');
-const { default: axios } = require('axios');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
-} = process.env;
+require("dotenv").config();
+const { Sequelize } = require("sequelize");
+const fs = require("fs");
+const path = require("path");
+const { default: axios } = require("axios");
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 //------------------------------------//
 //--------Coneccion con la DB---------//
@@ -102,7 +100,7 @@ Desafios.belongsToMany(Ciudad, { through: "desafioCiudad" });
 Ciudad.belongsToMany(Desafios, { through: "desafioCiudad" });
 // final  relaciones de muchos a muchos --------------------------->
 
-Ciudad.hasMany(Clientes);//-------
+Ciudad.hasMany(Clientes); //-------
 
 // inicio relaciones uno a muchos --------------------------------->
 // relación tipos de usuarios
@@ -181,6 +179,5 @@ Moneda.hasOne(Paises);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };
-
