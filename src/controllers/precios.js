@@ -6,14 +6,20 @@ function radioLatLong (lat1, long1, lat2, long2, mtsTolerancia){
     //long2 longitud de cada elemento de la tabla
     //mtsTolerancia cantidad de metros mínimos entre captura de precios
     // en 16 km hay margen de error de 13mts
+  
+    let lat1Num = parseFloat(lat1.replace(',', '.'));
+    let long1Num = parseFloat(long1.replace(',', '.'));
+    let lat2Num = parseFloat(lat2.replace(',', '.'));
+    let long2Num = parseFloat(long2.replace(',', '.'));
+
     function toRad(x) {
       return x * Math.PI / 180;
     }
   
     const R =  6372.795477598; // km
   
-    let dif_lat = lat2 - lat1;
-    let dif_long = long2 - long1;
+    let dif_lat = lat2Num - lat1Num;
+    let dif_long = long2Num - long1Num;
     let dLat = toRad(dif_lat);
     let dLon = toRad(dif_long)
     let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
