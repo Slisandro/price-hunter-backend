@@ -6,7 +6,7 @@ const { Op } = require("sequelize");
 
 function productos(req, res, next) {
     // Precio.findAll({
-    //     where: { usuarioId: 1 },//aca el id del user / req.user.id
+    //     where: { usuarioId: req.user.id },//aca el id del user / req.user.id
     // }).then(precios => {
     //     console.log(precios.map(price => {
     //         return price.dataValues
