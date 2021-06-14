@@ -23,7 +23,7 @@ async function addClientes(req, res, next) {
             password: password,
         });
         // Creamos el token
-        let token = jwt.sign({ user: nuevoCliente }, authConfig.secret, {
+        let token = jwt.sign({ cliente: nuevoCliente }, authConfig.secret, {
             expiresIn: authConfig.expires,
         });
 
@@ -50,9 +50,9 @@ async function logClientes(req, res, next) {
         if (!cliente) {
             res.status(404).send({ msg: "cliente con este correo no encontrado" })
         } else {
-            if (bcrypt.compareSync(datos_cliente.password, cliente.password)) {
+            if (cliente.password === datos_cliente.password) {
                 // Creamos el token
-                let token = jwt.sign({ user: cliente }, authConfig.secret, {
+                let token = jwt.sign({ cliente: cliente }, authConfig.secret, {
                     expiresIn: authConfig.expires
                 });
                 res.json({
@@ -60,7 +60,18 @@ async function logClientes(req, res, next) {
                     token: token
                 });
             } else {
-                res.status(401).send({ msg: "Contraseña incorrecta" })
+                if (bcrypt.compareSync(datos_cliente.password, cliente.password)) {
+                    // Creamos el token
+                    let token = jwt.sign({ user: cliente }, authConfig.secret, {
+                        expiresIn: authConfig.expires
+                    });
+                    res.json({
+                        cliente: cliente,
+                        token: token
+                    });
+                } else {
+                    res.status(401).send({ msg: "Contraseña incorrecta" })
+                }
             }
         }
         // !cliente ? (
