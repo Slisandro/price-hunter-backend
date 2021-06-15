@@ -92,13 +92,22 @@ const {
 // Precio.belongsToMany(Usuarios, { through: "precioUsuario" });
 // Usuarios.belongsToMany(Precio, { through: "precioUsuario" });
 
+
+
+//---------ESTAS RELACIONES QUE SON?????--------//
+//----------------------------------------------//
 // relación de muchos a muchos de usuarios a desafíos
 Desafios.belongsToMany(Usuarios, { through: "desafioUsuario" });
 Usuarios.belongsToMany(Desafios, { through: "desafioUsuario" });
+
 // relación de muchos a muchos de desafíos a ciudades
-Desafios.belongsToMany(Ciudad, { through: "desafioCiudad" });
-Ciudad.belongsToMany(Desafios, { through: "desafioCiudad" });
+
+// Desafios.belongsToMany(Ciudad, { through: "desafioCiudad" });
+// Ciudad.belongsToMany(Desafios, { through: "desafioCiudad" });
+
 // final  relaciones de muchos a muchos --------------------------->
+//----------------------------------------------//
+//----------------------------------------------//
 
 Ciudad.hasMany(Clientes); //-------
 
@@ -129,11 +138,20 @@ Desafios.belongsTo(Clientes);
 Desafios.hasMany(Precio);
 Precio.belongsTo(Desafios);
 
-Desafios.hasMany(Detalle);
-Detalle.belongsTo(Desafios);
 
-Ciudad.hasMany(Detalle);
-Detalle.belongsTo(Ciudad);
+//-------NO SE SI ESTO ESTÁ BIEN--------//
+//-------------------------------------//
+// Desafios.hasMany(Detalle);
+// Detalle.belongsTo(Desafios);
+
+// Ciudad.hasMany(Detalle);
+// Detalle.belongsTo(Ciudad);
+
+//-------NUEVA RELACION: COMO DICE LA DOCU DE SEQUELIZE--------//
+Desafios.belongsToMany(Ciudad, { through: Detalle });
+Ciudad.belongsToMany(Desafios, { through: Detalle });
+//-------------------------------------//
+//-------------------------------------//
 
 Productos.hasMany(Desafios);
 Desafios.belongsTo(Productos);
