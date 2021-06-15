@@ -4,7 +4,7 @@ function ciudades (req, res, next){
     let idPais;
     if (req.params.id) {idPais = req.params.id.toUpperCase()
         Ciudad.findAll({
-            attributes:['Ciudad', 'id', 'paiseCodigoAlfa'],
+            attributes:['ciudad', 'id', 'paiseCodigoAlfa'],
             where: {
                 paiseCodigoAlfa: idPais,
             },
