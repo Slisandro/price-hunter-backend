@@ -74,8 +74,7 @@ async function logUsuario(req, res, next) {
             if (!user) {
                 res.status(404).send({ msg: "Usuario con este correo no encontrado" })
             } else {//los usuarios pre cargados no se pueden hacer login porque su contraseña no esta codificada
-                if (bcrypt.compareSync(datos_usuario.password, user.password)) {
-                    // Creamos el token
+                if (user.password === datos_usuario.password) {
                     let token = jwt.sign({ user: user }, authConfig.secret, {
                         expiresIn: authConfig.expires
                     });
@@ -84,8 +83,20 @@ async function logUsuario(req, res, next) {
                         token: token
                     });
                 } else {
-                    res.status(401).send({ msg: "Contraseña incorrecta" })
+                    if (bcrypt.compareSync(datos_usuario.password, user.password)) {
+                        // Creamos el token
+                        let token = jwt.sign({ user: user }, authConfig.secret, {
+                            expiresIn: authConfig.expires
+                        });
+                        res.json({
+                            user: user,
+                            token: token
+                        });
+                    } else {
+                        res.status(401).send({ msg: "Contraseña incorrecta" })
+                    }
                 }
+
             }
         })
 

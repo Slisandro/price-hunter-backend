@@ -9,17 +9,17 @@ module.exports = (sequelize) => {
             unique: false,
         },  
         descripcion_desafio:{
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             unique: false,
         },
         fecha_inicial:{
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: false,
         },
         fecha_final:{
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: false,
         },
