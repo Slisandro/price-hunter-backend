@@ -13,6 +13,7 @@ const {
   Subcategoria,
   Tipo_transaccion,
   Transacciones,
+  Productos
 } = require("../../db");
 
 // --------------FAMILIA--------------
@@ -237,6 +238,21 @@ async function transacciones(req, res, next) {
     next(error);
   }
 }
+// --------------PRODUCTOS--------------
+async function productos (req, res, next) {
+  try {
+    const { nombre, contenido_neto, unidadMedidaCodigoUnidadMedida, subcategoriumId } = req.body;
+    const prod = await Productos.create({
+      nombre,
+      contenido_neto,
+      unidadMedidaCodigoUnidadMedida,
+      subcategoriumId,
+    });
+    res.json(prod);
+  } catch (error) {
+    next(error);
+  }
+}
 
 module.exports = {
   categoria,
@@ -253,4 +269,5 @@ module.exports = {
   familia,
   tipo_transaccion,
   transacciones,
+  productos
 };

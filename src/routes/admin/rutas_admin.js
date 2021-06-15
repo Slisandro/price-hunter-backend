@@ -12,7 +12,8 @@ const {
   familia,
   subcategoria,
   tipo_transaccion,
-  transacciones
+  transacciones,
+  productos
 } = require("../../controllers/admin/rutas_post.js");
 const { Router } = require("express");
 const router = Router();
@@ -45,5 +46,7 @@ router.post("/tipo_transaccion", tipo_transaccion);
 // Ruta: http://localhost:3001/admin/tipo_transaccion
 router.post("/transaccion", transacciones);
 // Ruta: http://localhost:3001/admin/transaccion
+router.post("/productos", productos);
+// Ruta: http://localhost:3001/admin/productos
 
 module.exports = router;
