@@ -265,8 +265,8 @@ const desafios = [
     productoId: 1,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar papa",
@@ -275,8 +275,8 @@ const desafios = [
     productoId: 2,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar leche_normal",
@@ -285,8 +285,8 @@ const desafios = [
     productoId: 3,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar huevos",
@@ -295,8 +295,8 @@ const desafios = [
     productoId: 4,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar harina_trigo",
@@ -305,8 +305,8 @@ const desafios = [
     productoId: 5,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar café",
@@ -315,8 +315,8 @@ const desafios = [
     productoId: 6,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar pan_tajado",
@@ -325,8 +325,8 @@ const desafios = [
     productoId: 7,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar azucar",
@@ -335,8 +335,8 @@ const desafios = [
     productoId: 8,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar sal",
@@ -345,8 +345,8 @@ const desafios = [
     productoId: 9,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
 ];
 
