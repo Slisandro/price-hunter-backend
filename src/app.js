@@ -3,8 +3,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require("./routes/index")
+const cors = require('cors')
 
 const server = express();
+server.use(cors())
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' }));
 server.use(express.json({ limit: '50mb' }));
