@@ -3,9 +3,9 @@ const {
     put_productos,
     put_paises,
     put_region,
+    put_ciudad,
+    put_monedas,
     categoria,
-    moneda,
-    ciudad,
     tipo_usuario,
     genero,
     clientes,
@@ -26,5 +26,9 @@ const {
   // Ruta: http://localhost:3001/getadmin/paises
   router.put("/region", put_region);
   // Ruta: http://localhost:3001/getadmin/region
+  router.put("/ciudad", put_ciudad);
+  // Ruta: http://localhost:3001/getadmin/ciudad
+  router.put("/monedas", put_monedas);
+  // Ruta: http://localhost:3001/getadmin/monedas
 
   module.exports = router;
