@@ -32,10 +32,11 @@ async function familia(req, res, next) {
 // --------------CATEGORIAS--------------
 async function categoria(req, res, next) {
   try {
-    const { nombre_categoria, descripcion } = req.body;
+    const { nombre_categoria, descripcion, familiumId } = req.body;
     const categoria = await Categoria.create({
       nombre_categoria,
       descripcion,
+      familiumId
     });
     res.json(categoria);
   } catch (error) {
