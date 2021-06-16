@@ -17,6 +17,7 @@ const precios = require("./precios");
 const crear_desafio = require("./creardesafio.js");
 const rutas_post = require("./admin/rutas_admin.js");
 const rutas_get = require("./admin/rutas_admin_get.js");
+const rutas_put = require("./admin/rutas_admin_put.js");
 
 
 const router = Router();
@@ -41,5 +42,6 @@ router.use("/", crear_desafio);
 
 router.use("/admin", rutas_post);
 router.use("/getadmin", rutas_get);
+router.use("/putadmin", rutas_put);
 
 module.exports = router;
