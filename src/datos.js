@@ -265,8 +265,8 @@ const desafios = [
     productoId: 1,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar papa",
@@ -275,8 +275,8 @@ const desafios = [
     productoId: 2,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar leche_normal",
@@ -285,8 +285,8 @@ const desafios = [
     productoId: 3,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar huevos",
@@ -295,8 +295,8 @@ const desafios = [
     productoId: 4,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar harina_trigo",
@@ -305,8 +305,8 @@ const desafios = [
     productoId: 5,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar café",
@@ -315,8 +315,8 @@ const desafios = [
     productoId: 6,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar pan_tajado",
@@ -325,8 +325,8 @@ const desafios = [
     productoId: 7,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar azucar",
@@ -335,8 +335,8 @@ const desafios = [
     productoId: 8,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
   {
     nombre_desafio: "canasta familiar sal",
@@ -345,8 +345,8 @@ const desafios = [
     productoId: 9,
     clienteId: 1,
     url_image: "https://www.latinflores.com/imagenes/productos/CANAVI004_L.jpg",
-    fecha_inicial: [2021, 06, 10],
-    fecha_final: [2021, 12, 31],
+    fecha_inicial: "21-06-10",
+    fecha_final: "21-12-31",
   },
 ];
 
@@ -939,71 +939,396 @@ const tipo_transaccion =[
 ]
 
 const transacciones_puntos =[
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Buenos Aires" , usuarioId: 1 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Córdoba" , usuarioId: 2 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Bahía Blanca" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Paraná" , usuarioId: 4 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- La Plata" , usuarioId: 5 , puntos: 2 , tipoTransaccionId: 1},
-  {observacion: "PSE - CITY-BANK Cta: ****6789" , usuarioId: 1 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - DAVIVIENDA Cta: ****8911" , usuarioId: 2 , puntos: 3 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****3147" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****1987" , usuarioId: 4 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****6478" , usuarioId: 5 , puntos: 4 , tipoTransaccionId: 2},
-  {observacion: "PSE - CITY-BANK Cta: ****6789" , usuarioId: 1 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - DAVIVIENDA Cta: ****8911" , usuarioId: 2 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****3147" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****1987" , usuarioId: 4 , puntos: 3 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****6478" , usuarioId: 5 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - CITY-BANK Cta: ****6789" , usuarioId: 1 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - DAVIVIENDA Cta: ****8911" , usuarioId: 2 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****3147" , usuarioId: 3 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****1987" , usuarioId: 4 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****6478" , usuarioId: 5 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - CITY-BANK Cta: ****6789" , usuarioId: 1 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - DAVIVIENDA Cta: ****8911" , usuarioId: 2 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****3147" , usuarioId: 3 , puntos: 2 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****1987" , usuarioId: 4 , puntos: 1 , tipoTransaccionId: 2},
-  {observacion: "PSE - MERCADO PAGO Cta: ****6478" , usuarioId: 5 , puntos: 3 , tipoTransaccionId: 2},
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar arroz- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar papa- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar leche_normal- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar huevos- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar harina_trigo- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar café- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar pan_tajado- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar azucar- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Buenos Aires" , 
+    usuarioId: 1 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Córdoba" , 
+    usuarioId: 2 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Bahía Blanca" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- Paraná" , 
+    usuarioId: 4 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "Price Hunter Asociados ARG / COL - canasta familiar sal- La Plata" , 
+    usuarioId: 5 , 
+    puntos: 2 , 
+    tipoTransaccionId: 1
+  },
+  {
+    observacion: "PSE - CITY-BANK Cta: ****6789" , 
+    usuarioId: 1 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - DAVIVIENDA Cta: ****8911" , 
+    usuarioId: 2 , 
+    puntos: 3 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****3147" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****1987" , 
+    usuarioId: 4 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****6478" , 
+    usuarioId: 5 , 
+    puntos: 4 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - CITY-BANK Cta: ****6789" , 
+    usuarioId: 1 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - DAVIVIENDA Cta: ****8911" , 
+    usuarioId: 2 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****3147" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****1987" , 
+    usuarioId: 4 , 
+    puntos: 3 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****6478" , 
+    usuarioId: 5 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - CITY-BANK Cta: ****6789" , 
+    usuarioId: 1 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - DAVIVIENDA Cta: ****8911" , 
+    usuarioId: 2 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****3147" , 
+    usuarioId: 3 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****1987" , 
+    usuarioId: 4 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****6478" , 
+    usuarioId: 5 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - CITY-BANK Cta: ****6789" , 
+    usuarioId: 1 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - DAVIVIENDA Cta: ****8911" , 
+    usuarioId: 2 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****3147" , 
+    usuarioId: 3 , 
+    puntos: 2 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****1987" , 
+    usuarioId: 4 , 
+    puntos: 1 , 
+    tipoTransaccionId: 2
+  },
+  {
+    observacion: "PSE - MERCADO PAGO Cta: ****6478" , 
+    usuarioId: 5 , 
+    puntos: 3 , 
+    tipoTransaccionId: 2
+  },
 ]
 
 module.exports = {

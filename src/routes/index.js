@@ -13,8 +13,12 @@ const clientes = require("./clientes");
 const tipo_transaccion = require("./tipo_transaccion");
 const transacciones = require("./transacciones");
 const crear_producto = require("./crearproducto");
-
+const crear_desafio = require("./creardesafio.js")
+const detalle_desafio = require("./detalledesafio")
+const precios = require("./precios");
 const rutas_post = require("./admin/rutas_admin.js");
+const rutas_get = require("./admin/rutas_admin_get.js");
+const rutas_put = require("./admin/rutas_admin_put.js");
 
 const router = Router();
 
@@ -33,7 +37,12 @@ router.use("/", tipo_transaccion);
 router.use("/", transacciones);
 router.use("/", clientes);
 router.use("/", crear_producto);
+router.use("/", precios);
+router.use("/", crear_desafio);
+router.use("/", detalle_desafio);
 
 router.use("/admin", rutas_post);
+router.use("/getadmin", rutas_get);
+router.use("/putadmin", rutas_put);
 
 module.exports = router;
