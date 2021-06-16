@@ -106,7 +106,7 @@ conn
     );
 
 
-    server.listen(process.env.DB_PORT, () => {
+    server.listen(process.env.PORT, () => {
       console.log("listen at 3001");
     });
   })
