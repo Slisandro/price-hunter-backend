@@ -120,13 +120,9 @@ const {
 //---------ESTAS RELACIONES QUE SON?????--------//
 //----------------------------------------------//
 // relación de muchos a muchos de usuarios a desafíos
-Desafios.belongsToMany(Usuarios, { through: "desafioUsuario" });
-Usuarios.belongsToMany(Desafios, { through: "desafioUsuario" });
+// Desafios.belongsToMany(Usuarios, { through: "desafioUsuario" });
+// Usuarios.belongsToMany(Desafios, { through: "desafioUsuario" });
 
-// relación de muchos a muchos de desafíos a ciudades
-
-// Desafios.belongsToMany(Ciudad, { through: "desafioCiudad" });
-// Ciudad.belongsToMany(Desafios, { through: "desafioCiudad" });
 
 // final  relaciones de muchos a muchos --------------------------->
 //----------------------------------------------//
