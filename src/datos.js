@@ -400,6 +400,15 @@ const detalle_desafios = [
 
 const precios=[
   {
+    latitud: "4.568745647" ,
+    longitud: "-74.23782559" , 
+    usuarioId: 6,
+    nombre_negocio: "probando mercado", 
+    direccion_negocio: "cerca a mi casa", 
+    precio: 37 ,
+    desafioId: 1
+  },
+  {
     latitud: "-34.796581" ,
     longitud: "-58.276012" , 
     usuarioId: 1 ,
@@ -767,6 +776,8 @@ const precios=[
     {nombre: "Mario" ,apellido: "Gonzalez" , email:'mariogonzalez@correo.com', fecha_de_nacimiento: [1996, 03, 26] ,ciudadId: 9, generoId: 2, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "258963147" , tipoUsuarioId: 1, password: "ASD658"},
     {nombre: "Ana" ,apellido: "Vargas" , email:'analvargas@correo.com', fecha_de_nacimiento: [2001, 04, 02] ,ciudadId: 19, generoId: 1, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "654321987" , tipoUsuarioId: 1, password: "OIU457"},
     {nombre: "Nina" ,apellido: "Otalora" , email:'ninaotalora@correo.com', fecha_de_nacimiento: [2005, 04, 02] ,ciudadId: 25, generoId: 1, metodo_de_cobro: "PSE" , banco: "MERCADO PAGO" , numero_de_cuenta: "951236478" , tipoUsuarioId: 1, password: "PÑL965"},
+    {nombre: "Carlos" ,apellido: "Lozano" , email: "carlos@correo.com" , fecha_de_nacimiento: [1978, 03, 26] ,ciudadId: 1, generoId: 2, metodo_de_cobro: "PSE" , banco: "DAVIPLATA" , numero_de_cuenta: "154851648" , tipoUsuarioId: 1, password: "celv1234"},
+
   ]
   
   const generos = [
