@@ -45,7 +45,7 @@ async function put_categoria(req, res, next) {
       {
         nombre_categoria,
         descripcion,
-        familiumId
+        familiumId,
       },
       {
         where: {
@@ -67,7 +67,7 @@ async function put_subcategoria(req, res, next) {
       {
         nombre_subcategoria,
         descripcion,
-        categoriumId
+        categoriumId,
       },
       {
         where: {
@@ -84,22 +84,28 @@ async function put_subcategoria(req, res, next) {
 // ________________ PUT PRODUCTOS ________________
 async function put_productos(req, res, next) {
   try {
-    const { id, nombre, contenido_neto, unidadMedidaCodigoUnidadMedida, subcategoriumId } = req.body;
+    const {
+      id,
+      nombre,
+      contenido_neto,
+      unidadMedidaCodigoUnidadMedida,
+      subcategoriumId,
+    } = req.body;
     const productos = await Productos.update(
       {
         nombre,
         contenido_neto,
         unidadMedidaCodigoUnidadMedida,
-        subcategoriumId
+        subcategoriumId,
       },
       {
         where: {
           id: id,
         },
       }
-      );
-      res.json(productos);
-    } catch (error) {
+    );
+    res.json(productos);
+  } catch (error) {
     next(error);
   }
 }
@@ -107,7 +113,7 @@ async function put_productos(req, res, next) {
 // ________________ PUT PAISES ________________
 async function put_paises(req, res, next) {
   try {
-    const { codigo_alfa, nombre_pais, regioneId} = req.body;
+    const { codigo_alfa, nombre_pais, regioneId } = req.body;
     const paises = await Paises.update(
       {
         nombre_pais,
@@ -119,9 +125,9 @@ async function put_paises(req, res, next) {
           codigo_alfa: codigo_alfa,
         },
       }
-      );
-      res.json(paises);
-    } catch (error) {
+    );
+    res.json(paises);
+  } catch (error) {
     next(error);
   }
 }
@@ -129,19 +135,19 @@ async function put_paises(req, res, next) {
 // ________________ PUT REGION ________________
 async function put_region(req, res, next) {
   try {
-    const { id, nombre_region} = req.body;
+    const { id, nombre_region } = req.body;
     const region = await Regiones.update(
       {
         nombre_region,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(region);
-    } catch (error) {
+    );
+    res.json(region);
+  } catch (error) {
     next(error);
   }
 }
@@ -149,20 +155,20 @@ async function put_region(req, res, next) {
 // ________________ PUT CIUDAD ________________
 async function put_ciudad(req, res, next) {
   try {
-    const { id, ciudad, paiseCodigoAlfa} = req.body;
+    const { id, ciudad, paiseCodigoAlfa } = req.body;
     const ciu = await Ciudad.update(
       {
         ciudad,
-        paiseCodigoAlfa
+        paiseCodigoAlfa,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(ciu);
-    } catch (error) {
+    );
+    res.json(ciu);
+  } catch (error) {
     next(error);
   }
 }
@@ -170,20 +176,20 @@ async function put_ciudad(req, res, next) {
 // ________________ PUT MONEDAS ________________
 async function put_monedas(req, res, next) {
   try {
-    const { codigo_moneda, nombre_moneda, simbolo} = req.body;
+    const { codigo_moneda, nombre_moneda, simbolo } = req.body;
     const moneda = await Moneda.update(
       {
         nombre_moneda,
-        simbolo
+        simbolo,
       },
       {
         where: {
-          codigo_moneda:codigo_moneda
+          codigo_moneda: codigo_moneda,
         },
       }
-      );
-      res.json(moneda);
-    } catch (error) {
+    );
+    res.json(moneda);
+  } catch (error) {
     next(error);
   }
 }
@@ -191,19 +197,19 @@ async function put_monedas(req, res, next) {
 // ________________ PUT TIPO_USUARIO ________________
 async function put_tipo_usuario(req, res, next) {
   try {
-    const { id, tipo_usuario} = req.body;
+    const { id, tipo_usuario } = req.body;
     const tipo_usu = await Tipo_usuario.update(
       {
         tipo_usuario,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(tipo_usu);
-    } catch (error) {
+    );
+    res.json(tipo_usu);
+  } catch (error) {
     next(error);
   }
 }
@@ -211,19 +217,19 @@ async function put_tipo_usuario(req, res, next) {
 // ________________ PUT UNIDAD_MEDIDA ________________
 async function put_unidad_medida(req, res, next) {
   try {
-    const { codigo_unidad_medida, nombre_unidad} = req.body;
+    const { codigo_unidad_medida, nombre_unidad } = req.body;
     const um = await Unidad_medida.update(
       {
         nombre_unidad,
       },
       {
         where: {
-          codigo_unidad_medida:codigo_unidad_medida
+          codigo_unidad_medida: codigo_unidad_medida,
         },
       }
-      );
-      res.json(um);
-    } catch (error) {
+    );
+    res.json(um);
+  } catch (error) {
     next(error);
   }
 }
@@ -231,19 +237,19 @@ async function put_unidad_medida(req, res, next) {
 // ________________ PUT GENEROS ________________
 async function put_generos(req, res, next) {
   try {
-    const { id, genero} = req.body;
+    const { id, genero } = req.body;
     const gen = await Generos.update(
       {
         genero,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(gen);
-    } catch (error) {
+    );
+    res.json(gen);
+  } catch (error) {
     next(error);
   }
 }
@@ -251,19 +257,19 @@ async function put_generos(req, res, next) {
 // ________________ PUT TIPO_TRANSACCION ________________
 async function put_tipo_transaccion(req, res, next) {
   try {
-    const { id, tipo_transaccion} = req.body;
+    const { id, tipo_transaccion } = req.body;
     const tipo_trans = await Tipo_transaccion.update(
       {
         tipo_transaccion,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(tipo_trans);
-    } catch (error) {
+    );
+    res.json(tipo_trans);
+  } catch (error) {
     next(error);
   }
 }
@@ -271,22 +277,22 @@ async function put_tipo_transaccion(req, res, next) {
 // ________________ PUT TRANSACCIONES ________________
 async function put_transaccion(req, res, next) {
   try {
-    const { id, observacion, puntos, usuarioId, tipoTransaccionId} = req.body;
+    const { id, observacion, puntos, usuarioId, tipoTransaccionId } = req.body;
     const transaccion = await Transacciones.update(
       {
-        observacion, 
-        puntos, 
+        observacion,
+        puntos,
         usuarioId,
-        tipoTransaccionId
+        tipoTransaccionId,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(transaccion);
-    } catch (error) {
+    );
+    res.json(transaccion);
+  } catch (error) {
     next(error);
   }
 }
@@ -294,11 +300,25 @@ async function put_transaccion(req, res, next) {
 // ________________ PUT CLIENTES ________________
 async function put_clientes(req, res, next) {
   try {
-    const { id, razon_social, nombre_cial_fantasia, cuit_nit_rut, email, telefono, direccion_fiscal, metodo_pago, banco, numero_cuenta, password, ciudadId, tipoUsuarioId  } = req.body;
+    const {
+      id,
+      razon_social,
+      nombre_cial_fantasia,
+      cuit_nit_rut,
+      email,
+      telefono,
+      direccion_fiscal,
+      metodo_pago,
+      banco,
+      numero_cuenta,
+      password,
+      ciudadId,
+      tipoUsuarioId,
+    } = req.body;
     const clientes = await Clientes.update(
       {
-        razon_social, 
-        nombre_cial_fantasia, 
+        razon_social,
+        nombre_cial_fantasia,
         cuit_nit_rut,
         email,
         telefono,
@@ -308,39 +328,51 @@ async function put_clientes(req, res, next) {
         numero_cuenta,
         password,
         ciudadId,
-        tipoUsuarioId
+        tipoUsuarioId,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(clientes);
-    } catch (error) {
+    );
+    res.json(clientes);
+  } catch (error) {
     next(error);
   }
 }
 
 // ________________ PUT DESAFIOS ________________
-async function put_transaccion(req, res, next) {
+async function put_desafios(req, res, next) {
   try {
-    const { id, observacion, puntos, usuarioId, tipoTransaccionId} = req.body;
-    const transaccion = await Transacciones.update(
+    const {
+      id,
+      nombre_desafio,
+      descripcion_desafio,
+      fecha_inicial,
+      fecha_final,
+      url_image,
+      clienteId,
+      productoId,
+    } = req.body;
+    const desafio = await Desafios.update(
       {
-        observacion, 
-        puntos, 
-        usuarioId,
-        tipoTransaccionId
+        nombre_desafio,
+        descripcion_desafio,
+        fecha_inicial,
+        fecha_final,
+        url_image,
+        clienteId,
+        productoId,
       },
       {
         where: {
-          id:id
+          id: id,
         },
       }
-      );
-      res.json(transaccion);
-    } catch (error) {
+    );
+    res.json(desafio);
+  } catch (error) {
     next(error);
   }
 }
@@ -360,5 +392,5 @@ module.exports = {
   put_tipo_transaccion,
   put_transaccion,
   put_clientes,
-  
+  put_desafios,
 };

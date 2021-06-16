@@ -36,7 +36,7 @@ async function categoria(req, res, next) {
     const categoria = await Categoria.create({
       nombre_categoria,
       descripcion,
-      familiumId
+      familiumId,
     });
     res.json(categoria);
   } catch (error) {

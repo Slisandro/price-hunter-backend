@@ -19,7 +19,6 @@ const rutas_post = require("./admin/rutas_admin.js");
 const rutas_get = require("./admin/rutas_admin_get.js");
 const rutas_put = require("./admin/rutas_admin_put.js");
 
-
 const router = Router();
 
 router.use("/", productos);
