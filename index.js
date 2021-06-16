@@ -106,7 +106,7 @@ conn
     );
 
 
-    server.listen(process.env.PORT, () => {
+    server.listen(3001, () => {
       console.log("listen at 3001");
     });
   })
