@@ -1,6 +1,7 @@
 const {Transacciones, Tipo_transaccion, Usuarios} = require('../db'); //fijarnos el nombre con que lo pone pablo.
 
 function transacciones (req, res, next){
+    const idUsuario = req.params.id
 
     Transacciones.findAll({
         attributes:['id', 'observacion', 'puntos', 'createdAt'],
@@ -9,12 +10,15 @@ function transacciones (req, res, next){
             attributes: ['id', 'tipo_transaccion'],
         },{
             model: Usuarios,
-            attributes:['nombre', 'apellido']
+            attributes:['id', 'nombre', 'apellido'],
+            where:{
+                id: idUsuario,
+            }
         }]
 
     })
     .then((respuesta)=>{
-        res.send(respuesta)
+        return res.send(respuesta)
     })
     .catch((err)=>{
         console.log(err);

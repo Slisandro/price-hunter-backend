@@ -7,7 +7,7 @@ const router = Router();
 
 // se agregar auth ?, no son necesarios mas cambios.
 
-router.get('/transacciones', transacciones) 
+router.get('/transacciones/:id', transacciones) 
 
 
 module.exports = router;

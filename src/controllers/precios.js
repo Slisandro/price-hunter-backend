@@ -1,4 +1,5 @@
-const { Precio, Desafios, Detalle, Usuarios, Ciudad} = require('../db');
+const { Precio, Desafios, Usuarios, Ciudad, Clientes} = require('../db');
+const {handlePoints, comparaCoordenadas} = require('../../config/funciones_publicas')
 
 //los precios no pueden ser 'cazados' en el mismo lugar o cerca de este para el mismo
 // desafio
@@ -75,7 +76,12 @@ function addPrecio (req, res, next){
             banderaCrear = {aceptado: false, msj: 'El id del desafío no existe'}
             return res.send(banderaCrear);
           }else{ 
-          const cantPrecios = desafio.ciudads[0].detalle.cantidad_precios
+          const cantPrecios = desafio.ciudads[0].detalle.cantidad_precios;
+          const cantPuntos = desafio.ciudads[0].detalle.puntos_ganar;
+          const nombreDesafio = desafio.nombre_desafio
+          const idCliente = desafio.clienteId
+          const nombreCiudad =  desafio.ciudads[0].ciudad
+          // return res.json(nombreCiudad);
             if (arrayPrecios.length > cantPrecios){
               banderaCrear = {aceptado: false, msj: 'Rechazdo, cantidad de precios requeridos ya cubierta'}
               return res.send(banderaCrear)
@@ -104,11 +110,11 @@ function addPrecio (req, res, next){
               //recive true or false
               banderaCrear = comparaCoordenadas (latitud, longitud, arrayPrecios, mtsTolera)
               if (banderaCrear.aceptado === false){
-                banderaCrear = {aceptado: false, msj: 'el precio ya fue tomado en esta ubicación, o muy cerca de la misma'}
+                banderaCrear = {aceptado: false, msj: 'El precio ya fue tomado en esta ubicación, o muy cerca de la misma'}
                 return res.send(banderaCrear);
                 }else{
 
-                  const newPrecio =  Precio.create({
+                  Precio.create({
                     latitud: latitud,
                     longitud: longitud,
                     nombre_negocio: nombre_negocio,
@@ -117,15 +123,31 @@ function addPrecio (req, res, next){
                     desafioId: desafioId,
                     usuarioId:  usuarioId,
                   }).then((creado)=>{
-                    const objCreado = Object.assign({}, creado.dataValues);
-                    const objSalida = Object.assign(objCreado, banderaCrear);
-                    // objcreado = Object.assign({}, );
-                    // return res.json(banderaCrear);
-                    
-                    return res.json(objSalida);
+                  //Post de puntos a transacciones
+                    Clientes.findOne({
+                      where:{
+                        id: idCliente
+                      }
+                    }).then(async(cliente)=>{
+                      if (cliente){
+                        const nombreCliente = cliente.razon_social;
+                        const puntosPorPrecio = cantPuntos / cantPrecios
+                        const observaciones = nombreCliente + ' - ' + nombreDesafio + ' - ' + nombreCiudad
+                        const datosPuntos = await handlePoints(observaciones, puntosPorPrecio, usuarioId, 1);
+                        // console.log(datosPuntos);
+                        // return res.json(datosPuntos)
+                        
+                       const objCreado = Object.assign({}, creado.dataValues);
+                       const objSalida = Object.assign(objCreado, banderaCrear);
+                       const objSalidaPuntos =  Object.assign(objSalida, datosPuntos);
+                       // objcreado = Object.assign({}, );
+                       // return res.json(banderaCrear);
+                       
+                       return res.json(objSalidaPuntos);
+                      }
+                    })
                   })
-                } 
-              
+                }               
               }     
             }
           }
@@ -133,62 +155,9 @@ function addPrecio (req, res, next){
       }  
     }
   })
-  //Post de puntos a transacciones
 }
 
-function radioLatLong (lat1, long1, lat2, long2, mtsTolerancia){
-  //lat1 latitud a comparar con la tabla
-  //Long1 longitud a comparar con la tabla
-  //lat2 latitud de cada elemento de la tabla, ya exite en la BD
-  //long2 longitud de cada elemento de la tabla , ya exite en la BD
-  //mtsTolerancia cantidad de metros mínimos entre captura de precios  // en 16 km hay margen de error de 13mts
-  let lat1Num = parseFloat(lat1.includes(',')? lat1.replace(',', '.'):lat1);
-  let long1Num = parseFloat(long1.includes(',')? long1.replace(',', '.'):long1);
 
-  function toRad(x) {
-    return x * Math.PI / 180;
-  }
-
-  const R =  6372.795477598; // km
-
-  let dif_lat = lat2 - lat1Num;
-  let dif_long = long2 - long1Num;
-  let dLat = toRad(dif_lat);
-  let dLon = toRad(dif_long)
-  let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-    Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  let d = R * c;
-  let dMts = d *1000;
-  let dif = dMts - mtsTolerancia
-
-  //objeto con la difernecia entre el radio de tolerancia y la coordenada, además de
-  // la distancia en metros totales entre coordenadas
-  return {diferencia_mts: dif, distancia_mts: dMts};
-}
-
-function comparaCoordenadas (lat, long, arrayObj, mtsTolera){
-  //si arrayObj esta vacío significa que no hay datos encontrados 
-  // con la función addPrecio. y que se trata del primer precio de un desafio
-
-  let resp = [];
-  if (arrayObj.length){ 
-    for (let x = 0; x < arrayObj.length; x++){
-      // console.log('holi');
-      resp.push(radioLatLong(lat, long, arrayObj[x].latitud, arrayObj[x].longitud, mtsTolera))
-      //evalua si el objeto recien agregado cumple con la distancia mínima o
-      // estan dentro del radio de tolerancia  
-      if (resp[resp.length-1].diferencia_mts<0){
-        console.log('el precio ya fue ingresado en esta ubicación')
-        return {aceptado: false, msj: 'el precio ya fue ingresado en esta ubicación'}
-      }
-    
-    }
-  }
-  return {aceptado: true, msj: 'Captura de precios Aceptada'};
-
-}
 
 module.exports = {
   addPrecio,
