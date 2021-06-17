@@ -8,8 +8,4 @@ const {auth} = require('../midelwares/auth')
 // router.post('/precios', auth, addPrecio )
 router.post('/precios',  addPrecio )
 
-
-
-
-
 module.exports = router;
