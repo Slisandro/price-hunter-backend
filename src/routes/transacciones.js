@@ -1,4 +1,4 @@
-const { transacciones } = require('../controllers/transacciones');
+const { transacciones, retiraPuntos } = require('../controllers/transacciones');
 const { Router } = require('express');
 const router = Router();
 // const {auth} = require('../middlewares/auth')
@@ -7,7 +7,9 @@ const router = Router();
 
 // se agregar auth ?, no son necesarios mas cambios.
 
-router.get('/transacciones/:id', transacciones) 
+router.post('/transacciones/retirapuntos', retiraPuntos)
+router.get('/transacciones/consulta/:id', transacciones) 
+
 
 
 module.exports = router;
