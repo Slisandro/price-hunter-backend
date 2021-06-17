@@ -35,21 +35,21 @@ async function Post_Crear_Desafio(req,res,next){
             }
         })
 
-        ciudades.forEach(async (obj_ciudad)=>{
-            // const ciudad = await Ciudad.findByPk(obj_ciudad.id);
-            // await desafio[0].addCiudad(ciudad, {
-            //     puntos_ganar: obj_ciudad.puntosaganar,
-            //     cantidad_precios: obj_ciudad.cantidaddeprecios
-            // })
-            Detalle.create({
-                desafioId: desafio[0].id,
-                ciudadId: obj_ciudad.id,
-                puntos_ganar: obj_ciudad.puntosaganar,
-                cantidad_precios: obj_ciudad.cantidaddeprecios
-            })
-        })
         
         if( desafio[1]===true){
+            ciudades.forEach(async (obj_ciudad)=>{
+                // const ciudad = await Ciudad.findByPk(obj_ciudad.id);
+                // await desafio[0].addCiudad(ciudad, {
+                //     puntos_ganar: obj_ciudad.puntosaganar,
+                //     cantidad_precios: obj_ciudad.cantidaddeprecios
+                // })
+                Detalle.create({
+                    desafioId: desafio[0].id,
+                    ciudadId: obj_ciudad.id,
+                    puntos_ganar: obj_ciudad.puntosaganar,
+                    cantidad_precios: obj_ciudad.cantidaddeprecios
+                })
+            })
             res.status(200).json({msg:"El desafío fué creado exitosamente, puede verlo en tu lista de desafíos."})
         }else{
             res.status(200).json({msg:"El desafío ya existe en tu lista de desafíos."})

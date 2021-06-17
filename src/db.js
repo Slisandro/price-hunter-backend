@@ -10,12 +10,12 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,DB_PORT,NODE_ENV} = process.env;
 //------------------------------------//
 
 let sequelize =
-  process.env.NODE_ENV === "production"
+  NODE_ENV === "production"
     ? new Sequelize({
       database: DB_NAME,
       dialect: "postgres",
       host: DB_HOST,
-      port: DB_PORT,
+      port: 5432,
       username: DB_USER,
       password: DB_PASSWORD,
       pool: {
@@ -120,13 +120,9 @@ const {
 //---------ESTAS RELACIONES QUE SON?????--------//
 //----------------------------------------------//
 // relación de muchos a muchos de usuarios a desafíos
-Desafios.belongsToMany(Usuarios, { through: "desafioUsuario" });
-Usuarios.belongsToMany(Desafios, { through: "desafioUsuario" });
+// Desafios.belongsToMany(Usuarios, { through: "desafioUsuario" });
+// Usuarios.belongsToMany(Desafios, { through: "desafioUsuario" });
 
-// relación de muchos a muchos de desafíos a ciudades
-
-// Desafios.belongsToMany(Ciudad, { through: "desafioCiudad" });
-// Ciudad.belongsToMany(Desafios, { through: "desafioCiudad" });
 
 // final  relaciones de muchos a muchos --------------------------->
 //----------------------------------------------//
