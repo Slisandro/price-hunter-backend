@@ -21,7 +21,16 @@ let rptaPuntos={};
         return rptaPuntos 
     }
 }   
-
+/**
+ * radioLatLong determina la difernecia entre un punto coordinado (lat y log) y los metros de tolerancia respecto a otro u 
+ * otros puntos (si se usa array), ademas de devolver la distancia entre estos. 
+ * @param {*} lat1 latitud del usuario desde el front
+ * @param {*} long1 longitud del usuario desde el fornt
+ * @param {*} lat2 // debe venir de un array que traiga latitud de la tabla de precios
+ * @param {*} long2 // debe venir de un array que traiga latitud de la tabla de precios
+ * @param {*} mtsTolerancia //Viene una lista desplegable desde el front de usuario
+ * @returns diferencia en metros de un punto y el margen de tolerancia y distancia total entre los dos puntos coordinados.
+ */
 function radioLatLong (lat1, long1, lat2, long2, mtsTolerancia){
     //lat1 latitud a comparar con la tabla
     //Long1 longitud a comparar con la tabla
@@ -69,11 +78,11 @@ function comparaCoordenadas (lat, long, arrayObj, mtsTolera){
           // console.log('el precio ya fue ingresado en esta ubicación')
           return {aceptado: false, msj: 'el precio ya fue ingresado en esta ubicación'}
         }
-      
       }
     }
     return {aceptado: true, msj: 'Captura de precios Aceptada'};
 }
+
 
 module.exports={
     handlePoints,
