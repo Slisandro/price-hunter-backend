@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const { default: axios } = require("axios");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,DB_PORT,NODE_ENV} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,NODE_ENV} = process.env;
 
 //------------------------------------//
 //--------Coneccion con la DB---------//

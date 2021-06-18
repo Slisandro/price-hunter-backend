@@ -8,63 +8,59 @@ async function addUsuarios(req, res, next) {
     const usuario = req.body; //traigo el objeto del body a la variable usuario
     let password = await bcrypt.hash(usuario.password, +authConfig.rounds); //hago el cifrado de la contraseña ("es una promesa")
     // le paso la contraseña, le paso un numero con un signo de mas (+) para que esta variable sea un numero === number
-    try {
-        if (
-            usuario.nombre === undefined ||
-            usuario.apellido === undefined ||
-            usuario.fecha_de_nacimiento === undefined ||
-            usuario.email === undefined ||
-            usuario.password === undefined
-        ) {
-            return res.status(400).send({ msg: "error en los datos enviados" })
-        }
-        if (usuario.nombre.length < 3) {
-            return res.status(400).send({ msg: "error en nombre enviado" })
-        }
-        if (usuario.apellido.length < 2) {
-            return res.status(400).send({ msg: "error en apellido enviado" })
-        }
-        if (usuario.fecha_de_nacimiento.length < 3) {
-            return res.status(400).send({ msg: "error en la fecha enviada" })
-        }
-        if (usuario.password.length < 3) {
-            return res.status(400).send({ msg: "error en la contraseña enviado" })
-        }
-        Usuarios.create({
-            nombre: usuario.nombre,
-            apellido: usuario.apellido,
-            fecha_de_nacimiento: usuario.fecha_de_nacimiento,
-            ciudadId: usuario.ciudadId,
-            generoId: usuario.generoId,
-            metodo_de_cobro: usuario.metodo_de_cobro,
-            banco: usuario.banco,
-            numero_de_cuenta: usuario.numero_de_cuenta,
-            tipoUsuarioId: usuario.tipoUsuarioId,
-            password: password,
-            email: usuario.email,
-        }).then(user => {
-            // Creamos el token
-            let token = jwt.sign({ user: user }, authConfig.secret, {
-                expiresIn: authConfig.expires,
-            });
-
-            res.json({
-                user: user,
-                token: token
-            });
-        })
-
-        // return res.send(nuevoUsuario);// aca tengo que enviar el token
-    } catch (err) {
-        next(err);
+    if (
+        usuario.nombre === undefined ||
+        usuario.apellido === undefined ||
+        usuario.fecha_de_nacimiento === undefined ||
+        usuario.email === undefined ||
+        usuario.password === undefined
+    ) {
+        return res.status(400).send({ msg: "error en los datos enviados" })
     }
+    if (usuario.nombre.length < 3) {
+        return res.status(400).send({ msg: "error en nombre enviado" })
+    }
+    if (usuario.apellido.length < 2) {
+        return res.status(400).send({ msg: "error en apellido enviado" })
+    }
+    if (usuario.fecha_de_nacimiento.length < 3) {
+        return res.status(400).send({ msg: "error en la fecha enviada" })
+    }
+    if (usuario.password.length < 3) {
+        return res.status(400).send({ msg: "error en la contraseña enviado" })
+    }
+    Usuarios.create({
+        nombre: usuario.nombre,
+        apellido: usuario.apellido,
+        fecha_de_nacimiento: usuario.fecha_de_nacimiento,
+        ciudadId: usuario.ciudadId,
+        generoId: usuario.generoId,
+        metodo_de_cobro: usuario.metodo_de_cobro,
+        banco: usuario.banco,
+        numero_de_cuenta: usuario.numero_de_cuenta,
+        tipoUsuarioId: usuario.tipoUsuarioId,
+        password: password,
+        email: usuario.email,
+    }).then(user => {
+        // Creamos el token
+        let token = jwt.sign({ user: user }, authConfig.secret, {
+            expiresIn: authConfig.expires,
+        });
+
+        res.json({
+            user: user,
+            token: token
+        });
+    }).catch(err => {
+        res.send({ msg: "el usuario ya existe" })
+        next(err);
+    })
 }
 
 // ingreso de un usuario
 async function logUsuario(req, res, next) {
     // console.log(req.user);
     const datos_usuario = req.body;
-    try {
 
         Usuarios.findOne({
             where: {
@@ -98,11 +94,9 @@ async function logUsuario(req, res, next) {
                 }
 
             }
-        })
-
-    } catch (error) {
-        next(error)
-    }
+        }).catch (error =>{
+            res.send({ msg: "el usuario no existe" })
+            next(error)})
 }
 
 
