@@ -102,6 +102,7 @@ const {
   Detalle,
   Regiones,
   Generos,
+  Miscelaneos,
   // el archivo unidadesmedida.js exporta Unidad_medida
 } = sequelize.models;
 
