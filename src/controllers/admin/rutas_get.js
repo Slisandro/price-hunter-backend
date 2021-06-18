@@ -36,6 +36,26 @@ function categoria(req, res, next) {
       });
   }
 
+  function subcategoria(req, res, next) {
+    Subcategoria.findAll()
+      .then((r) => {
+        res.send(r);
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+
+  function um(req, res, next) {
+    Unidad_medida.findAll()
+      .then((r) => {
+        res.send(r);
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+
 module.exports = {
-  familia, categoria, 
+  familia, categoria, subcategoria, um
 };

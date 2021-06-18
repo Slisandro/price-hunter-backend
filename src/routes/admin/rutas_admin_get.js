@@ -21,6 +21,10 @@ const {
   router.get("/familia", familia);
   // Ruta: http://localhost:3001/getadmin/familia
   router.get("/categoria", categoria);
-  // Ruta: http://localhost:3001/getadmin/familia
+  // Ruta: http://localhost:3001/getadmin/categoria
+  router.get("/subcategoria", subcategoria);
+  // Ruta: http://localhost:3001/getadmin/subcategoria
+  router.get("/um", um);
+  // Ruta: http://localhost:3001/getadmin/um
 
   module.exports = router;

@@ -105,8 +105,8 @@ conn
       console.log("Carga de datos correcta transacciones_puntos")
     );
 
-
-    server.listen(process.env.PORT, () => {
+const port = process.env.PORT || 3001;
+    server.listen(port, () => {
       console.log("listen at 3001");
     });
   })
