@@ -56,6 +56,36 @@ function categoria(req, res, next) {
       });
   }
 
+  function region(req, res, next) {
+    Regiones.findAll()
+      .then((r) => {
+        res.send(r);
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+  
+  function pais(req, res, next) {
+     Paises.findAll()
+        .then((r) => {
+          res.send(r);
+        })
+        .catch((error) => {
+          next(error);
+        });
+    }
+
+    function moneda(req, res, next) {
+      Moneda.findAll()
+         .then((r) => {
+           res.send(r);
+         })
+         .catch((error) => {
+           next(error);
+         });
+     }
+
 module.exports = {
-  familia, categoria, subcategoria, um
+  familia, categoria, subcategoria, um, region, pais, moneda
 };
