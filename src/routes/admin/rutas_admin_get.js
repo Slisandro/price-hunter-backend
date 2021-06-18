@@ -26,5 +26,12 @@ const {
   // Ruta: http://localhost:3001/getadmin/subcategoria
   router.get("/um", um);
   // Ruta: http://localhost:3001/getadmin/um
+  router.get("/region", region);
+  // Ruta: http://localhost:3001/getadmin/region
+  router.get("/pais", pais);
+  // Ruta: http://localhost:3001/getadmin/pais
+  router.get("/moneda", moneda);
+  // Ruta: http://localhost:3001/getadmin/moneda
+
 
   module.exports = router;
