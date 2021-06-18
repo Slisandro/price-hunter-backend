@@ -1342,6 +1342,11 @@ const transacciones_puntos =[
   },
 ]
 
+
+const miscelaneas=[
+  {campo: "Metros Tolerancia" , dato: "100"},
+]
+
 module.exports = {
   transacciones_puntos,
   tipo_transaccion,
