@@ -1,14 +1,14 @@
 const { transacciones, retiraPuntos } = require('../controllers/transacciones');
 const { Router } = require('express');
 const router = Router();
-// const {auth} = require('../middlewares/auth')
+const {auth} = require('../midelwares/auth')
 //agregar middlerware para la restricción, para que este logeado 
-//router.get('/transacciones', auth, transacciones) 
+// router.get('/transacciones', auth, transacciones) 
 
-// se agregar auth ?, no son necesarios mas cambios.
 
-router.post('/transacciones/retirapuntos', retiraPuntos)
-router.get('/transacciones/consulta/:id', transacciones) 
+
+router.post('/transacciones/retirapuntos', auth, retiraPuntos)
+router.get('/transacciones/consulta/:id', auth, transacciones) 
 
 
 

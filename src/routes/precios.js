@@ -5,7 +5,7 @@ const router = Router();
 const {auth} = require('../midelwares/auth')
 
 ///proteger la ruta
-// router.post('/precios', auth, addPrecio )
-router.post('/precios',  addPrecio )
+router.post('/precios', auth, addPrecio )
+// router.post('/precios',  addPrecio )
 
 module.exports = router;

@@ -13,7 +13,7 @@ let rptaPuntos={};
     const tipoTransaccion = Trans.dataValues.tipoTransaccionId
     if (tipoTransaccion ===1){
         rptaPuntos = {rptaPuntos: `Se han agregado ${Trans.dataValues.puntos} puntos a tu acumulado`};
-        console.log(rptaPuntos)
+        // console.log(rptaPuntos)
         return rptaPuntos;
 
     }else if(tipoTransaccion ===2){

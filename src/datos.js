@@ -1365,4 +1365,5 @@ module.exports = {
   categorias,
   subcategoria,
   productos,
+  miscelaneas,
 };
