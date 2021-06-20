@@ -7,8 +7,9 @@ const { radioLatLong } = require('../../config/funciones_publicas');
 
 function productos(req, res, next) {
     // console.log(req.user)
+    const {lat, long, dis} = req.query;
 
-    if (req.body.lat && req.body.long && req.body.dis) {
+    if (lat && long && dis) {
         const nombre_input = req.query.name;
         if (nombre_input !== undefined) {  //condicion del front mandar id_subcategoria y/o mandar nombre_producto.
 
@@ -47,8 +48,8 @@ function productos(req, res, next) {
                         respuesta.forEach(producto => {
                             producto.desafios.forEach((desafio) => {
                                 desafio.precios.forEach((precioo) => {
-                                    const distancia = radioLatLong(req.body.lat, req.body.long, precioo.latitud, precioo.longitud, req.body.dis)// mediante la función radioLatLong obtengo la distancia de precio con respecto al usuario
-                                    if (distancia.distancia_mts <= req.body.dis) { // pregunto si la distancia en metros es menor, igual a la distancia que se me pasa por el front, para poder hacer push solo a los que cumplan con esta restriccion.
+                                    const distancia = radioLatLong(lat, long, precioo.latitud, precioo.longitud, dis)// mediante la función radioLatLong obtengo la distancia de precio con respecto al usuario
+                                    if (distancia.distancia_mts <= dis) { // pregunto si la distancia en metros es menor, igual a la distancia que se me pasa por el front, para poder hacer push solo a los que cumplan con esta restriccion.
                                         const obj = {
                                             precio: precioo.precio,
                                             desafio: desafio.nombre_desafio,
