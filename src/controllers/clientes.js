@@ -33,6 +33,7 @@ async function addClientes(req, res, next) {
         });
         // return res.send(nuevoCliente);// aca tengo que enviar el token
     } catch (err) {
+        res.send({ msg: "el cliente ya existe" })
         next(err);
     }
 }
@@ -85,6 +86,7 @@ async function logClientes(req, res, next) {
         // )
 
     } catch (error) {
+        res.send({ msg: "el cliente no existe" })
         next(error)
     }
 }
