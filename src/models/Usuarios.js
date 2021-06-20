@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       unique: true,
     },
     fecha_de_nacimiento: {
-      type: DataTypes.DATE, //-----------------
+      type: DataTypes.STRING, //-----------------
       allowNull: false,
     },
     // id_ciudad: {           //------------------

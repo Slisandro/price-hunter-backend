@@ -2,7 +2,8 @@ const {Ciudad} = require('../db'); //fijarnos el nombre con que lo pone pablo.
 
 function ciudades (req, res, next){
     let idPais;
-    if (req.params.id) {idPais = req.params.id.toUpperCase()
+    if (req.params.id) {
+        idPais = req.params.id.toUpperCase()
         Ciudad.findAll({
             attributes:['ciudad', 'id', 'paiseCodigoAlfa'],
             where: {

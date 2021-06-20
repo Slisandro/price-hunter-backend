@@ -3,19 +3,19 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const { default: axios } = require("axios");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,DB_PORT,NODE_ENV} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,NODE_ENV} = process.env;
 
 //------------------------------------//
 //--------Coneccion con la DB---------//
 //------------------------------------//
 
 let sequelize =
-  process.env.NODE_ENV === "production"
+  NODE_ENV === "production"
     ? new Sequelize({
       database: DB_NAME,
       dialect: "postgres",
       host: DB_HOST,
-      port: DB_PORT,
+      port: 5432,
       username: DB_USER,
       password: DB_PASSWORD,
       pool: {
@@ -102,6 +102,7 @@ const {
   Detalle,
   Regiones,
   Generos,
+  Miscelaneos,
   // el archivo unidadesmedida.js exporta Unidad_medida
 } = sequelize.models;
 
