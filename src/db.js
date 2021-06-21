@@ -103,6 +103,7 @@ const {
   Regiones,
   Generos,
   Miscelaneos,
+  Administradores,
   // el archivo unidadesmedida.js exporta Unidad_medida
 } = sequelize.models;
 
@@ -138,6 +139,9 @@ Usuarios.belongsTo(Tipo_usuario);
 
 Tipo_usuario.hasMany(Clientes);
 Clientes.belongsTo(Tipo_usuario);
+
+Tipo_usuario.hasMany(Administradores);
+Administradores.belongsTo(Tipo_usuario);
 
 // Tipo_usuario.hasMany(Desafios);
 // Desafios.belongsTo(Tipo_usuario);

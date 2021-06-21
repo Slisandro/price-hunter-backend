@@ -790,6 +790,11 @@ const precios=[
     {razon_social: "Price Hunter Asociados ARG / COL" , nombre_cial_fantasia: "Price Hunter" ,cuit_nit_rut: "800123456" , email: 'pricehunter@correo.com', telefono: "3112546025" ,direccion_fiscal: "cra 5 este 47 - 49", ciudadId: 1, metodo_pago: "PSE" , banco: "MERCADO PAGO" , numero_cuenta: "954786321" , tipoUsuarioId: 2, password: "phunter98756"},
     {razon_social: "Soy Henry" , nombre_cial_fantasia: "Soy Henry" ,cuit_nit_rut: "800123654" , email: 'soyhenry@correo.com',telefono: "121465488" ,direccion_fiscal: "calle p no 85 - 12", ciudadId: 1, metodo_pago: "PSE" , banco: "MERCADO PAGO" , numero_cuenta: "987412545" , tipoUsuarioId: 2, password: "soyhenry123"},
   ]
+
+  const administradores =[
+    {email: "admin1@correo.com" , nombre: "adminhunter1" , tipoUsuarioId: 3, password: "admin1abc"},
+    {email: "admin2@correo.com" , nombre: "adminhunter2" , tipoUsuarioId: 3, password: "admin2xyz"},
+  ]
   
 const regiones = [
   { nombre_region: "America del Sur" },
@@ -1366,4 +1371,5 @@ module.exports = {
   subcategoria,
   productos,
   miscelaneas,
+  administradores,
 };

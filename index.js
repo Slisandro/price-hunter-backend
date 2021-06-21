@@ -19,6 +19,7 @@ const {
   tipo_transaccion,
   transacciones_puntos,
   miscelaneas,
+  administradores,
 } = require("./src/datos");
 const { ciudades } = require("./src/datosciudades");
 const {
@@ -41,6 +42,7 @@ const {
   Tipo_transaccion,
   Transacciones,
   Miscelaneos,
+  Administradores
 } = require("./src/db");
 
 //-------------------------------------------------------------------//
@@ -109,7 +111,9 @@ conn
     await Miscelaneos.bulkCreate(miscelaneas).then(
       console.log("Carga de datos correcta Miscelaneas")
     );
-
+    await Administradores.bulkCreate(administradores).then(
+      console.log("Carga de datos correcta Administradores")
+    );
 
 const port = process.env.PORT || 3001;
     server.listen(port, () => {
