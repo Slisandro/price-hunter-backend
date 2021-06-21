@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
         genero:{
             type: DataTypes.STRING,
             allowNull: false,
-            unique: false,
+            unique: true,
         },
 
     });

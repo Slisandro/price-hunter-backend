@@ -13,7 +13,9 @@ async function Post_Crear_Desafio(req,res,next){
             ciudades 
         } = req.body;
 
-        const id_cliente = 1; // ESTO ES DE PRUEBA, DESPUÉS LO VAMOS A RECIBIR POR HEADER. (cliente logueado)
+        
+
+        const id_cliente = req.cliente.id;
         
         if( !nombre || !descripcion || !fechainicial || !fechafinal || !id_producto || !img || !id_cliente || !ciudades || ciudades.length<=0 ){
             return res.status(200).json({msg:"Todos los campos son oblicatorios."})
@@ -56,6 +58,7 @@ async function Post_Crear_Desafio(req,res,next){
         }
         
     } catch (error) {
+        res.json({msg:"No se pudo intente de nuevo."})
         next(error)
     }
     
