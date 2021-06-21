@@ -8,7 +8,7 @@ const {auth} = require('../midelwares/auth')
 
 
 router.post('/transacciones/retirapuntos', auth, retiraPuntos)
-router.get('/transacciones/consulta/:id', auth, transacciones) 
+router.get('/transacciones/consulta', auth, transacciones) 
 
 
 

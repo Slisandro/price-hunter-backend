@@ -36,7 +36,7 @@ async function retiraPuntos (req, res, next){
     const observacion = metodocobro + ' ' + banco + ' ' + cubreCuenta;
     const datosPuntos = await handlePoints(observacion, puntosRetiro, usuarioId, 2);
 
-        return res.send(datosPuntos);
+    return res.send(datosPuntos);
 }
 
 module.exports = {
