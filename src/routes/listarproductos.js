@@ -4,11 +4,11 @@
 const { ListarProductos } = require('../controllers/listarproductos');
 const { Router } = require('express');
 const router = Router();
-const { auth } = require('../midelwares/auth')
+const { auth, auth_cliente } = require('../midelwares/auth')
 const { restriccion } = require('../midelwares/police')
 //agregar middlerware para la restricción, para que este logeado 
 // router.get('/listarproductos', auth, restriccion, ListarProductos)
-router.get('/listarproductos', ListarProductos)
+router.get('/listarproductos', auth_cliente,  ListarProductos)
 
 
 
