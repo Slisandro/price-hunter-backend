@@ -7,8 +7,9 @@ const authConfig = require('../../config/auth');
 async function logIn(req, res, next) {
     // console.log(req.user);
     const datos = req.body;
-    // --------------------------------------- inicio usuario ------------------------------------- //
 
+    // --------------------------------------- inicio usuario ------------------------------------- //
+//combinacion 
     Usuarios.findOne({
         where: {
             email: datos.email
