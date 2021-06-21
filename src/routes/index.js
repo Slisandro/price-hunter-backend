@@ -19,6 +19,9 @@ const precios = require("./precios");
 const rutas_post = require("./admin/rutas_admin.js");
 const rutas_get = require("./admin/rutas_admin_get.js");
 const rutas_put = require("./admin/rutas_admin_put.js");
+const listar_productos = require("../routes/listarproductos");
+const listar_ciudades_cliente = require("./ciudades-form-cliente");
+const listar_sub_categorias = require("./listar-subcategorias");
 
 const router = Router();
 
@@ -40,6 +43,17 @@ router.use("/", crear_producto);
 router.use("/", precios);
 router.use("/", crear_desafio);
 router.use("/", detalle_desafio);
+//-----lista de productos para form cliente-----//
+router.use("/", listar_productos);
+//----------------------------------------------//
+
+//-----lista de ciudades para form cliente-----//
+router.use("/", listar_ciudades_cliente);
+//----------------------------------------------//
+
+//-----lista de subcategorias para form cliente/Nuevo Producto-----//
+router.use("/", listar_sub_categorias);
+//----------------------------------------------//
 
 router.use("/admin", rutas_post);
 router.use("/getadmin", rutas_get);

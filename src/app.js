@@ -34,6 +34,9 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
     const message = err.message || err;
     console.error(err);
     res.status(status).send(message);
-  });
+    next();
+});
+
+
   
 module.exports = server;
