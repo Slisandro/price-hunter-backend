@@ -76,6 +76,16 @@ function categoria(req, res, next) {
         });
     }
 
+    function ciudad(req, res, next) {
+      Ciudad.findAll()
+         .then((r) => {
+           res.send(r);
+         })
+         .catch((error) => {
+           next(error);
+         });
+     }
+
     function moneda(req, res, next) {
       Moneda.findAll()
          .then((r) => {
@@ -87,5 +97,5 @@ function categoria(req, res, next) {
      }
 
 module.exports = {
-  familia, categoria, subcategoria, um, region, pais, moneda
+  familia, categoria, subcategoria, um, region, pais, moneda, ciudad
 };
