@@ -20,11 +20,15 @@ const {
 async function put_familia(req, res, next) {
   try {
     const { id, nombre_familia, descripcion } = req.body;
+    let parametros= {}
+    if (nombre_familia.length > 0){
+      parametros.nombre_familia=nombre_familia
+    }
+    if(descripcion.length > 0){
+      parametros.descripcion=descripcion
+    }
     const familia = await Familia.update(
-      {
-        nombre_familia,
-        descripcion,
-      },
+     parametros,
       {
         where: {
           id: id,
@@ -41,12 +45,18 @@ async function put_familia(req, res, next) {
 async function put_categoria(req, res, next) {
   try {
     const { id, nombre_categoria, descripcion, familiumId } = req.body;
+    let parametros= {}
+    if (nombre_categoria.length > 0){
+      parametros.nombre_categoria=nombre_categoria
+    }
+    if(descripcion.length > 0){
+      parametros.descripcion=descripcion
+    }
+    if(familiumId){
+      parametros.familiumId=familiumId
+    }
     const categoria = await Categoria.update(
-      {
-        nombre_categoria,
-        descripcion,
-        familiumId,
-      },
+      parametros,
       {
         where: {
           id: id,
@@ -63,12 +73,19 @@ async function put_categoria(req, res, next) {
 async function put_subcategoria(req, res, next) {
   try {
     const { id, nombre_subcategoria, descripcion, categoriumId } = req.body;
+    let parametros= {}
+    if (nombre_subcategoria.length > 0){
+      parametros.nombre_subcategoria=nombre_subcategoria
+    }
+    if(descripcion.length > 0){
+      parametros.descripcion=descripcion
+    }
+    if(categoriumId){
+      parametros.categoriumId=categoriumId
+    }
     const subcategoria = await Subcategoria.update(
-      {
-        nombre_subcategoria,
-        descripcion,
-        categoriumId,
-      },
+     
+      parametros,
       {
         where: {
           id: id,
@@ -91,13 +108,21 @@ async function put_productos(req, res, next) {
       unidadMedidaCodigoUnidadMedida,
       subcategoriumId,
     } = req.body;
+    let parametros= {}
+    if (nombre.length > 0){
+      parametros.nombre=nombre
+    }
+    if(contenido_neto){
+      parametros.contenido_neto=contenido_neto
+    }
+    if(unidadMedidaCodigoUnidadMedida.length > 0){
+      parametros.unidadMedidaCodigoUnidadMedida=unidadMedidaCodigoUnidadMedida
+    }
+    if(subcategoriumId){
+      parametros.subcategoriumId=subcategoriumId
+    }
     const productos = await Productos.update(
-      {
-        nombre,
-        contenido_neto,
-        unidadMedidaCodigoUnidadMedida,
-        subcategoriumId,
-      },
+      parametros,
       {
         where: {
           id: id,
@@ -113,13 +138,20 @@ async function put_productos(req, res, next) {
 // ________________ PUT PAISES ________________
 async function put_paises(req, res, next) {
   try {
-    const { codigo_alfa, nombre_pais, regioneId } = req.body;
+    const { codigo_alfa, nombre_pais, regioneId, monedaCodigoMoneda } = req.body;
+    let parametros= {}
+    
+    if(nombre_pais.length > 0){
+      parametros.nombre_pais=nombre_pais
+    }
+    if(regioneId){
+      parametros.regioneId=regioneId
+    }
+    // if(monedaCodigoMoneda.length > 0){
+    //   parametros.monedaCodigoMoneda=monedaCodigoMoneda
+    // }
     const paises = await Paises.update(
-      {
-        nombre_pais,
-        regioneId,
-        // monedaCodigoMoneda
-      },
+      parametros,
       {
         where: {
           codigo_alfa: codigo_alfa,
