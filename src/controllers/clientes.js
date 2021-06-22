@@ -6,7 +6,7 @@ const authConfig = require('../../config/auth');
 // registro de un nuevo cliente
 async function addClientes(req, res, next) {
     const cliente = req.body; //traigo el objeto del body a la variable cliente
-    let password = await bcrypt.hash(cliente.password, authConfig.rounds); //hago el cifrado de la contraseña ("es una promesa")
+    let password = await bcrypt.hash(cliente.password, +authConfig.rounds); //hago el cifrado de la contraseña ("es una promesa")
     // le paso la contraseña 
     try {
 
@@ -21,6 +21,8 @@ async function addClientes(req, res, next) {
             banco: cliente.banco,
             numero_cuenta: cliente.numero_cuenta,
             password: password,
+            tipoUsuarioId: 2,
+            ciudadId: cliente.ciudadId,
         });
         // Creamos el token
         let token = jwt.sign({ cliente: nuevoCliente }, authConfig.secret, {
