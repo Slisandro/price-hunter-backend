@@ -1,4 +1,4 @@
-const { Usuarios, Clientes } = require('../db');
+const { Usuarios, Clientes, Administradores } = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../../config/auth');
@@ -7,8 +7,9 @@ const authConfig = require('../../config/auth');
 async function logIn(req, res, next) {
     // console.log(req.user);
     const datos = req.body;
-    // --------------------------------------- inicio usuario ------------------------------------- //
 
+    // --------------------------------------- inicio usuario ------------------------------------- //
+    //combinacion 
     Usuarios.findOne({
         where: {
             email: datos.email
@@ -25,7 +26,42 @@ async function logIn(req, res, next) {
                 }
             }).then(cliente => {
                 if (!cliente) {
-                    res.status(404).send({ msg: "Registro con este correo no encontrado" })
+                    // res.status(404).send({ msg: "Registro con este correo no encontrado" })
+
+                    // --------------------------------------- inicio admin ------------------------------------- //
+                    Administradores.findOne({
+                        where: {
+                            email: datos.email
+                        }
+                    }).then(admin => {
+                        if (!admin) {
+                            res.status(404).send({ msg: "Registro con este correo no encontrado" })
+                        } else {
+                            if (admin.password === datos.password) {
+                                let token = jwt.sign({ admin: admin }, authConfig.secret, {
+                                    expiresIn: authConfig.expires
+                                });
+                                res.json({
+                                    admin: admin,
+                                    token: token
+                                });
+                            } else {
+                                if (bcrypt.compareSync(datos.password, admin.password)) {
+                                    // Creamos el token
+                                    let token = jwt.sign({ admin: admin }, authConfig.secret, {
+                                        expiresIn: authConfig.expires
+                                    });
+                                    res.json({
+                                        admin: admin,
+                                        token: token
+                                    });
+                                } else {
+                                    res.status(401).send({ msg: "Contraseña incorrecta" })
+                                }
+                            }
+                        }
+                    })
+                    // --------------------------------------- fin admin ------------------------------------- //
                 } else {
                     if (cliente.password === datos.password) {
                         let token = jwt.sign({ cliente: cliente }, authConfig.secret, {
