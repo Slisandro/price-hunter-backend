@@ -38,7 +38,7 @@ async function addUsuarios(req, res, next) {
         metodo_de_cobro: usuario.metodo_de_cobro,
         banco: usuario.banco,
         numero_de_cuenta: usuario.numero_de_cuenta,
-        tipoUsuarioId: usuario.tipoUsuarioId,
+        tipoUsuarioId: 1,
         password: password,
         email: usuario.email,
     }).then(user => {

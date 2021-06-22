@@ -23,6 +23,7 @@ const listar_productos = require("../routes/listarproductos");
 const listar_ciudades_cliente = require("./ciudades-form-cliente");
 const listar_sub_categorias = require("./listar-subcategorias");
 const logIn = require("./login");
+const  registroAdmin = require("./admin/registroAdmin");
 
 const router = Router();
 
@@ -56,6 +57,7 @@ router.use("/", listar_ciudades_cliente);
 router.use("/", listar_sub_categorias);
 //----------------------------------------------//
 
+router.use("/", registroAdmin)
 router.use("/admin", rutas_post);
 router.use("/getadmin", rutas_get);
 router.use("/putadmin", rutas_put);
