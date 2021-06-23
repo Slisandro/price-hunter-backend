@@ -106,6 +106,16 @@ function categoria(req, res, next) {
          });
      }
 
+     function productos (req, res, next) {
+      Productos.findAll()
+         .then((r) => {
+           res.send(r);
+         })
+         .catch((error) => {
+           next(error);
+         });
+     }
+
 module.exports = {
-  familia, categoria, subcategoria, um, region, pais, moneda, ciudad, tipo_usuario,
+  familia, categoria, subcategoria, um, region, pais, moneda, ciudad, tipo_usuario, productos,
 };
