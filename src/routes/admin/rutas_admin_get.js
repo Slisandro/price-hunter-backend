@@ -34,6 +34,8 @@ const {
   // Ruta: http://localhost:3001/getadmin/moneda
   router.get("/ciudad", ciudad);
   // Ruta: http://localhost:3001/getadmin/ciudad
+  router.get("/tipo_usuario", tipo_usuario);
+  // Ruta: http://localhost:3001/getadmin/tipo_usuario
 
 
   module.exports = router;

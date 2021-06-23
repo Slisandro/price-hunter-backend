@@ -96,6 +96,16 @@ function categoria(req, res, next) {
          });
      }
 
+     function tipo_usuario (req, res, next) {
+      Tipo_usuario.findAll()
+         .then((r) => {
+           res.send(r);
+         })
+         .catch((error) => {
+           next(error);
+         });
+     }
+
 module.exports = {
-  familia, categoria, subcategoria, um, region, pais, moneda, ciudad
+  familia, categoria, subcategoria, um, region, pais, moneda, ciudad, tipo_usuario,
 };
