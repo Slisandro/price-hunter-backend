@@ -1,4 +1,22 @@
-const { Precio, Desafios, Transacciones, Usuarios, Ciudad, Clientes} = require('../src/db');
+const {Transacciones} = require('../src/db');
+const {cambiaLetras} = require('../src/datos');
+
+function cambiaCaracteres(palabra){
+    let nuevaPalabra = ''; 
+    if (palabra.length){
+        for(let x = 0; x < palabra.length; x++){
+        let objRemplaza = cambiaLetras.find(arg => arg.quitar === palabra[x]);
+            if (objRemplaza){
+                nuevaPalabra = nuevaPalabra + objRemplaza.poner;
+            }else{
+                nuevaPalabra = nuevaPalabra + palabra[x];
+            }
+        }
+    }
+    return nuevaPalabra;
+} 
+
+
 
 async function handlePoints (observacion, puntos, usuarioId, tipoTransaccionId){
     // console.log(observacion, puntos, usuarioId, tipoTransaccionId);
@@ -88,4 +106,5 @@ module.exports={
     handlePoints,
     radioLatLong,
     comparaCoordenadas,
+    cambiaCaracteres,
 }
