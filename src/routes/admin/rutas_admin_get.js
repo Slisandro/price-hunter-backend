@@ -36,6 +36,8 @@ const {
   // Ruta: http://localhost:3001/getadmin/ciudad
   router.get("/tipo_usuario", tipo_usuario);
   // Ruta: http://localhost:3001/getadmin/tipo_usuario
+  router.get("/productos", productos);
+  // Ruta: http://localhost:3001/getadmin/productos
 
 
   module.exports = router;
