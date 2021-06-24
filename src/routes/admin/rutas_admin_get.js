@@ -13,7 +13,9 @@ const {
     subcategoria,
     tipo_transaccion,
     transacciones,
-    productos
+    productos,
+    categoriaById,
+    subcategoriaById
   } = require("../../controllers/admin/rutas_get.js");
   const { Router } = require("express");
   const router = Router();
@@ -38,6 +40,10 @@ const {
   // Ruta: http://localhost:3001/getadmin/tipo_usuario
   router.get("/productos", productos);
   // Ruta: http://localhost:3001/getadmin/productos
+  router.get("/categoria/:id", categoriaById);
+  // Ruta: http://localhost:3001/getadmin/categoria/:id
+  router.get("/subcategoria/:id", subcategoriaById);
+  // Ruta: http://localhost:3001/getadmin/categoria/:id
 
 
   module.exports = router;

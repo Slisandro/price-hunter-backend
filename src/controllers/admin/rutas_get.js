@@ -1,3 +1,4 @@
+
 const {
   Paises,
   Regiones,
@@ -116,6 +117,37 @@ function categoria(req, res, next) {
          });
      }
 
+     function categoriaById (req, res, next) {
+       const {id} = req.params
+       Categoria.findAll({
+        where: {
+          familiumId: id
+        }
+      })
+         .then((r) => {
+           res.send(r);
+         })
+         .catch((error) => {
+           next(error);
+         });
+     }
+
+     function subcategoriaById (req, res, next) {
+      const {id} = req.params
+      Subcategoria.findAll({
+       where: {
+        categoriumId: id
+       }
+     })
+        .then((r) => {
+          res.send(r);
+        })
+        .catch((error) => {
+          next(error);
+        });
+    }
+
+
 module.exports = {
-  familia, categoria, subcategoria, um, region, pais, moneda, ciudad, tipo_usuario, productos,
+  familia, categoria, subcategoria, um, region, pais, moneda, ciudad, tipo_usuario, productos, categoriaById, subcategoriaById
 };
