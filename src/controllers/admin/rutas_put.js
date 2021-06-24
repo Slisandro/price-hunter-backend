@@ -158,15 +158,12 @@ async function put_region(req, res, next) {
     if (nombre_region.length > 0) {
       parametros.nombre_region = nombre_region;
     }
-  
-    const region = await Regiones.update(
-     parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+
+    const region = await Regiones.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(region);
   } catch (error) {
     next(error);
@@ -184,14 +181,11 @@ async function put_ciudad(req, res, next) {
     if (paiseCodigoAlfa.length > 0) {
       parametros.paiseCodigoAlfa = paiseCodigoAlfa;
     }
-    const ciu = await Ciudad.update(
-      parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+    const ciu = await Ciudad.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(ciu);
   } catch (error) {
     next(error);
@@ -209,14 +203,11 @@ async function put_monedas(req, res, next) {
     if (simbolo.length > 0) {
       parametros.simbolo = simbolo;
     }
-    const moneda = await Moneda.update(
-     parametros,
-      {
-        where: {
-          codigo_moneda: codigo_moneda,
-        },
-      }
-    );
+    const moneda = await Moneda.update(parametros, {
+      where: {
+        codigo_moneda: codigo_moneda,
+      },
+    });
     res.json(moneda);
   } catch (error) {
     next(error);
@@ -231,15 +222,12 @@ async function put_tipo_usuario(req, res, next) {
     if (tipo_usuario.length > 0) {
       parametros.tipo_usuario = tipo_usuario;
     }
-    
-    const tipo_usu = await Tipo_usuario.update(
-     parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+
+    const tipo_usu = await Tipo_usuario.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(tipo_usu);
   } catch (error) {
     next(error);
@@ -250,19 +238,16 @@ async function put_tipo_usuario(req, res, next) {
 async function put_unidad_medida(req, res, next) {
   try {
     const { codigo_unidad_medida, nombre_unidad } = req.body;
-    let parametros = {}
+    let parametros = {};
     if (nombre_unidad.length > 0) {
       parametros.nombre_unidad = nombre_unidad;
     }
-    
-    const um = await Unidad_medida.update(
-     parametros,
-      {
-        where: {
-          codigo_unidad_medida: codigo_unidad_medida,
-        },
-      }
-    );
+
+    const um = await Unidad_medida.update(parametros, {
+      where: {
+        codigo_unidad_medida: codigo_unidad_medida,
+      },
+    });
     res.json(um);
   } catch (error) {
     next(error);
@@ -273,18 +258,15 @@ async function put_unidad_medida(req, res, next) {
 async function put_generos(req, res, next) {
   try {
     const { id, genero } = req.body;
-    let parametros = {}
+    let parametros = {};
     if (genero.length > 0) {
       parametros.genero = genero;
     }
-    const gen = await Generos.update(
-      parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+    const gen = await Generos.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(gen);
   } catch (error) {
     next(error);
@@ -295,18 +277,15 @@ async function put_generos(req, res, next) {
 async function put_tipo_transaccion(req, res, next) {
   try {
     const { id, tipo_transaccion } = req.body;
-    let parametros = {}
+    let parametros = {};
     if (tipo_transaccion.length > 0) {
       parametros.tipo_transaccion = tipo_transaccion;
     }
-    const tipo_trans = await Tipo_transaccion.update(
-     parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+    const tipo_trans = await Tipo_transaccion.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(tipo_trans);
   } catch (error) {
     next(error);
@@ -317,7 +296,7 @@ async function put_tipo_transaccion(req, res, next) {
 async function put_transaccion(req, res, next) {
   try {
     const { id, observacion, puntos, usuarioId, tipoTransaccionId } = req.body;
-    let parametros = {}
+    let parametros = {};
     if (observacion.length > 0) {
       parametros.observacion = observacion;
     }
@@ -330,14 +309,11 @@ async function put_transaccion(req, res, next) {
     if (tipoTransaccionId) {
       parametros.tipoTransaccionId = tipoTransaccionId;
     }
-    const transaccion = await Transacciones.update(
-      parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+    const transaccion = await Transacciones.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(transaccion);
   } catch (error) {
     next(error);
@@ -362,51 +338,48 @@ async function put_clientes(req, res, next) {
       ciudadId,
       tipoUsuarioId,
     } = req.body;
-    let parametros = {}
-    if ( razon_social.length > 0) {
-      parametros.razon_social =  razon_social;
+    let parametros = {};
+    if (razon_social.length > 0) {
+      parametros.razon_social = razon_social;
     }
     if (nombre_cial_fantasia.length > 0) {
       parametros.nombre_cial_fantasia = nombre_cial_fantasia;
     }
-    if ( cuit_nit_rut.length > 0) {
-      parametros.cuit_nit_rut =  cuit_nit_rut;
+    if (cuit_nit_rut.length > 0) {
+      parametros.cuit_nit_rut = cuit_nit_rut;
     }
     if (email.length > 0) {
       parametros.email = email;
     }
-    if ( telefono.length > 0) {
-      parametros.telefono =  telefono;
+    if (telefono.length > 0) {
+      parametros.telefono = telefono;
     }
     if (direccion_fiscal.length > 0) {
       parametros.direccion_fiscal = direccion_fiscal;
     }
-    if ( metodo_pago.length > 0) {
-      parametros.metodo_pago =  metodo_pago;
+    if (metodo_pago.length > 0) {
+      parametros.metodo_pago = metodo_pago;
     }
     if (banco.length > 0) {
       parametros.banco = banco;
     }
-    if ( numero_cuenta.length > 0) {
-      parametros.numero_cuenta =  numero_cuenta;
+    if (numero_cuenta.length > 0) {
+      parametros.numero_cuenta = numero_cuenta;
     }
     if (password.length > 0) {
       parametros.password = password;
-    }    
+    }
     if (ciudadId) {
       parametros.ciudadId = ciudadId;
     }
     if (tipoUsuarioId) {
       parametros.tipoUsuarioId = tipoUsuarioId;
     }
-    const clientes = await Clientes.update(
-      parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+    const clientes = await Clientes.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(clientes);
   } catch (error) {
     next(error);
@@ -426,21 +399,21 @@ async function put_desafios(req, res, next) {
       clienteId,
       productoId,
     } = req.body;
-    let parametros = {}
-    if ( nombre_desafio.length > 0) {
-      parametros.nombre_desafio =  nombre_desafio;
+    let parametros = {};
+    if (nombre_desafio.length > 0) {
+      parametros.nombre_desafio = nombre_desafio;
     }
     if (descripcion_desafio.length > 0) {
       parametros.descripcion_desafio = descripcion_desafio;
     }
-    if ( fecha_inicial.length > 0) {
-      parametros.fecha_inicial =  fecha_inicial;
+    if (fecha_inicial.length > 0) {
+      parametros.fecha_inicial = fecha_inicial;
     }
     if (fecha_final.length > 0) {
       parametros.fecha_final = fecha_final;
     }
-    if ( url_image.length > 0) {
-      parametros.url_image =  url_image;
+    if (url_image.length > 0) {
+      parametros.url_image = url_image;
     }
     if (clienteId) {
       parametros.clienteId = clienteId;
@@ -448,14 +421,11 @@ async function put_desafios(req, res, next) {
     if (productoId) {
       parametros.productoId = productoId;
     }
-    const desafio = await Desafios.update(
-     parametros,
-      {
-        where: {
-          id: id,
-        },
-      }
-    );
+    const desafio = await Desafios.update(parametros, {
+      where: {
+        id: id,
+      },
+    });
     res.json(desafio);
   } catch (error) {
     next(error);
