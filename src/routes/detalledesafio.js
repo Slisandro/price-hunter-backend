@@ -7,6 +7,6 @@ const {auth} = require('../midelwares/auth')
 
 // se puede agregar auth, no son necesarios mas cambios.
 
-router.get('/detalledesafio',  auth, DetalleDesafio) 
+router.post('/detalledesafio',  auth, DetalleDesafio) 
 
 module.exports = router;
