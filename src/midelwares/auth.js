@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
 const authConfig = require('../../config/auth');
+const {OAuth2Client} = require('google-auth-library');
 const { Usuarios, Clientes, Administradores } = require('../db');
+
+const client = new OAuth2Client(CLIENT_ID);
 
 module.exports = {
     /**
