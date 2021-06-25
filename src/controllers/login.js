@@ -2,14 +2,58 @@ const { Usuarios, Clientes, Administradores } = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../../config/auth');
+// const {OAuth2Client} = require('google-auth-library');
 
 // ingreso de un usuario
 async function logIn(req, res, next) {
-    // console.log(req.user);
     const datos = req.body;
+    if (datos.Aa) {
+        let datos_google = datos.dt;
+        const [usuarioGoogle, created] = await Usuarios.findOrCreate({
+            where: {
+                email: datos_google.Nt
+            },
+            defaults: {
+                nombre: datos_google.uU,
+                apellido: datos_google.qS,
+                email: datos_google.Nt,
+                fecha_de_nacimiento: "",
+                password: "passwordGoogle",
+            }
+        })
+        console.log(created)
+        if (usuarioGoogle) {
+            let token = jwt.sign({ user: usuarioGoogle.dataValues }, datos.mc.idpId, {
+                expiresIn: datos.mc.expires_at
+            });
+            return res.json({
+                usuario: usuarioGoogle.dataValues,
+                token: `${token} ${datos.mc.idpId}`
+            });
+        }else{
+            res.status(500).send({ msg: "error en el server" })
+        }
+    }
+    // const client = new OAuth2Client(datos);
 
-    // --------------------------------------- inicio usuario ------------------------------------- //
-    //combinacion 
+    //------------------------------------------------------------------------------------------------//
+
+    // async function verify() {
+    //     const ticket = await client.verifyIdToken({
+    //         idToken: token,
+    //         audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+    //         // Or, if multiple clients access the backend:
+    //         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+    //     });
+    //     const payload = ticket.getPayload();
+    //     const userid = payload['sub'];
+    //     // If request specified a G Suite domain:
+    //     // const domain = payload['hd'];
+    // }
+    // verify().catch(console.error);
+
+    //------------------------------------------------------------------------------------------------//
+
     Usuarios.findOne({
         where: {
             email: datos.email
@@ -35,7 +79,7 @@ async function logIn(req, res, next) {
                         }
                     }).then(admin => {
                         if (!admin) {
-                            res.status(404).send({ msg: "Registro con este correo no encontrado" })
+                            res.json({ msg: "Registro con este correo no encontrado" })
                         } else {
                             if (admin.password === datos.password) {
                                 let token = jwt.sign({ admin: admin }, authConfig.secret, {
@@ -82,7 +126,7 @@ async function logIn(req, res, next) {
                                 token: token
                             });
                         } else {
-                            res.status(401).send({ msg: "Contraseña incorrecta" })
+                            res.send({ msg: "Contraseña incorrecta" })
                         }
                     }
                 }
