@@ -69,14 +69,13 @@ function addPrecio (req, res, next){
         Precio.findAll({
           attributes: ['id', 'latitud', 'longitud', 'precio', 'desafioId', 'usuarioId'],
           where:{
-            ciudadId: idCiudad
+            ciudadId: idCiudad,
+            desafioId: desafioId
           },
           include:{
             model: Ciudad,
             attributes:['id', 'ciudad']
           }
-
-       
         }).then((precios)=>{
           if (precios.length){
             const preciosCapturados = precios.length
