@@ -3,6 +3,7 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 const { default: axios } = require("axios");
+// const { ciudad } = require("controllers/admin/rutas_post");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,NODE_ENV} = process.env;
 
 //------------------------------------//
@@ -205,6 +206,9 @@ Categoria.belongsTo(Familia);
 
 Usuarios.hasMany(Precio);
 Precio.belongsTo(Usuarios);
+
+Ciudad.hasMany(Precio);
+Precio.belongsTo(Ciudad);
 
 //Monedero
 Usuarios.hasMany(Transacciones);

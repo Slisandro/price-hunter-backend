@@ -1,6 +1,70 @@
 const {Transacciones} = require('../src/db');
 const {cambiaLetras} = require('../src/datos');
 
+
+function fechaContraHoy(fechaComprobar){
+    let arrFecha = fechaComprobar.split('-');
+    arrFecha = arrFecha.map(e => Number(e));
+    let yearDesafio = (arrFecha[0] + 2000) *10000; //2021 => 20210000
+    let monthDesafio = arrFecha[1]  * 100; // 11 => 1100
+    let dayDesafio = arrFecha[2]; //23 => 23
+    let fechaDesafio = yearDesafio + monthDesafio + dayDesafio;
+  
+    let hoyDia = new Date();
+    let yearHoy = hoyDia.getFullYear() *10000;
+    let monthHoy = (hoyDia.getMonth()+1) *100; //getmonth asume diciembre como 11
+    let dayHoy = hoyDia.getDate();  //getDate genera el numero del dia de la fecha
+    let fechaHoy  = yearHoy + monthHoy + dayHoy
+    
+    if (fechaDesafio < fechaHoy){
+     return false; 
+    }else{
+      return true;
+    }
+  };
+
+function procesaGoogle (arr){
+    let nuevoArray =[]
+    let tipoDato = '';
+    if (arr.length){
+        for (let x = 0; x < arr.length; x++){
+        let newName = cambiaCaracteres(arr[x].long_name).toLowerCase();
+        let newShortName = cambiaCaracteres(arr[x].short_name).toLowerCase();
+            if (arr[x].types[0] === 'country'){
+                tipoDato = 'pais'
+            }else if (arr[x].types[0] === 'administrative_area_level_1'){
+                tipoDato = 'nivel1'
+            }else if (arr[x].types[0] === 'administrative_area_level_2'){
+                tipoDato = 'nivel2'
+            }else if (arr[x].types[0] === 'locality'){
+                tipoDato = 'nivel3'
+            }
+            nuevoArray.push(
+                { 
+                    long_name: newName,
+                    short_name: newShortName,
+                    type: tipoDato
+                }
+            )
+        }
+    }
+    return nuevoArray;
+}
+
+function fraccionarApiGoogle (objGoogle){
+    const paisGoogle = objGoogle.find(arg => arg.type === 'pais');
+    const nivel1Google =  objGoogle.find(arg => arg.type === 'nivel1');
+    const nivel2Google = objGoogle.find(arg => arg.type === 'nivel2');
+    const nivel3Google = objGoogle.find(arg => arg.type === 'nivel3');
+
+    let paisFront = paisGoogle ? paisGoogle.long_name : '';
+    let nivel1Front = nivel1Google ? nivel1Google.long_name : '';
+    let nivel2Front = nivel2Google ? nivel2Google.long_name : '';
+    let nivel3Front = nivel3Google ? nivel3Google.long_name : '';
+
+    return [paisFront, nivel1Front, nivel2Front, nivel3Front];
+}
+
 function cambiaCaracteres(palabra){
     let nuevaPalabra = ''; 
     if (palabra.length){
@@ -107,4 +171,8 @@ module.exports={
     radioLatLong,
     comparaCoordenadas,
     cambiaCaracteres,
+    fraccionarApiGoogle,
+    procesaGoogle,
+    fechaContraHoy,
+    
 }
