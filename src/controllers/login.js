@@ -23,13 +23,23 @@ async function logIn(req, res, next) {
         })
         console.log(created)
         if (usuarioGoogle) {
-            let token = jwt.sign({ user: usuarioGoogle.dataValues }, datos.mc.idpId, {
-                expiresIn: datos.mc.expires_at
-            });
-            return res.json({
-                usuario: usuarioGoogle.dataValues,
-                token: `${token} ${datos.mc.idpId}`
-            });
+            if (created) {
+                let token = jwt.sign({ user: usuarioGoogle.dataValues }, datos.mc.idpId, {
+                    expiresIn: datos.mc.expires_at
+                });
+                return res.json({
+                    usuario: usuarioGoogle.dataValues,
+                    token: `${token} ${datos.mc.idpId}`
+                });
+            }else{
+                let token = jwt.sign({ user: usuarioGoogle.dataValues }, authConfig.secret, {
+                    expiresIn: authConfig.expires
+                });
+                return res.json({
+                    usuario: usuarioGoogle.dataValues,
+                    token: token
+                });
+            }
         }else{
             res.status(500).send({ msg: "error en el server" })
         }
