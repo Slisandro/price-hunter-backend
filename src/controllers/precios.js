@@ -77,7 +77,8 @@ function addPrecio (req, res, next){
             attributes:['id', 'ciudad']
           }
         }).then((precios)=>{
-          if (precios.length){
+          // return res.json(precios.length)
+          // if (precios.length){
             const preciosCapturados = precios.length
               if (preciosCapturados< cantPrecios){
                 const preciosUsuario = precios.filter(arg => arg.usuarioId === usuarioId)
@@ -131,9 +132,9 @@ function addPrecio (req, res, next){
                 banderaCrear = {aceptado: false,  msj: 'Captura rechazada, ya se ha completado la cantidad de precios requerida por el cliente'}
                 return res.send(banderaCrear);
               }
-          }else{
-            banderaCrear.aceptado = true;
-          }
+          // }else{
+          //   banderaCrear.aceptado = true;
+          // }
         })
       }
     }
