@@ -1,7 +1,7 @@
-const { Productos, Precio, Desafios, Unidad_medida } = require('../db'); //fijarnos el nombre con que lo pone pablo.
+const { Productos,Clientes, Precio, Desafios, Unidad_medida } = require('../db'); //fijarnos el nombre con que lo pone pablo.
 const axios = require("axios");
 const { Op } = require("sequelize");
-const { radioLatLong } = require('../../config/funciones_publicas');
+const { radioLatLong, buscaCliente } = require('../../config/funciones_publicas');
 
 
 
@@ -20,7 +20,7 @@ function productos(req, res, next) {
                         [Op.substring]: `${nombre_min}`
                     }
                 },
-                attributes: ["nombre", "contenido_neto"], //unidad_medida, id_sub_categoria
+                // attributes: ["nombre", "contenido_neto"], //unidad_medida, id_sub_categoria
 
                 include: [
 
@@ -30,34 +30,46 @@ function productos(req, res, next) {
                     },
                     {
                         model: Desafios,
-                        attributes: ['nombre_desafio'],
-                        include:
-                        {
-                            model: Precio,
-                            attributes: ['precio', "latitud", "longitud"], //fecha_captura  
-                        }
+                        attributes: ['nombre_desafio', 'clienteId'],
+                        include:[
+                            {
+                                model: Precio,
+                                // attributes: ['precio', "latitud", "longitud"], //fecha_captura  
+                            },
+                        ]                    
                     }
                 ]
             })
                 // .then((respuesta)=>{res.send(respuesta[0].desafios[0].precios)})
-                .then((respuesta) => {
-                    // res.json(respuesta)
-
+                .then(async (respuesta) => {
+                    // return res.json(respuesta)
                     if (respuesta.length > 0) {
                         const array_productos = [];
-                        respuesta.forEach(producto => {
-                            producto.desafios.forEach((desafio) => {
+                        respuesta.forEach( producto => {
+                            producto.desafios.forEach( (desafio) => {
                                 desafio.precios.forEach((precioo) => {
+                                    const idcliente = desafio.clienteId
                                     const distancia = radioLatLong(lat, long, precioo.latitud, precioo.longitud, dis)// mediante la función radioLatLong obtengo la distancia de precio con respecto al usuario
                                     if (distancia.distancia_mts <= dis) { // pregunto si la distancia en metros es menor, igual a la distancia que se me pasa por el front, para poder hacer push solo a los que cumplan con esta restriccion.
-                                        const obj = {
-                                            precio: precioo.precio,
-                                            desafio: desafio.nombre_desafio,
-                                            preoducto: producto.nombre,
-                                            contenido_neto: producto.contenido_neto,
-                                            unidad_medida: producto.unidad_medida.codigo_unidad_medida
-                                        }
-                                        array_productos.push(obj);
+                                        const hoyDia = precioo.createdAt
+                                        let yearHoy = hoyDia.getFullYear() *10000;
+                                        let monthHoy = (hoyDia.getMonth()+1) *100; //getmonth asume diciembre como 11
+                                        let dayHoy = hoyDia.getDate();  //getDate genera el numero del dia de la fecha
+                                        let fechaHoy  = yearHoy + monthHoy + dayHoy
+                                        // console.log(cliente)
+                                        
+                                            const obj = {
+                                                precio: precioo.precio,
+                                                desafio: desafio.nombre_desafio,
+                                                preoducto: producto.nombre,
+                                                contenido_neto: producto.contenido_neto,
+                                                unidad_medida: producto.unidad_medida.codigo_unidad_medida,
+                                                distanciaPunto: distancia.distancia_mts,
+                                                fecha: fechaHoy,
+                                                idCLiente: idcliente
+                                            }
+                                            array_productos.push(obj);
+                                        // })
                                     }
                                 })
                             })
@@ -65,6 +77,11 @@ function productos(req, res, next) {
                         if (array_productos.length === 0) {
                             return { msg: "No hay productos en ese rango de distancia" }
                         }else{
+                            // const cliente = buscaCliente(idcliente);
+                            for (let x = 0; x< array_productos.length; x++){
+                                let cliente = await buscaCliente(array_productos[x].idCLiente)
+                                array_productos[x].cliente = cliente.razon_social
+                            }
                             return array_productos;
                         }
                     } else {

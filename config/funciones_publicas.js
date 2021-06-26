@@ -1,6 +1,24 @@
 const {Transacciones} = require('../src/db');
 const {cambiaLetras} = require('../src/datos');
+const {Clientes} = require('../src/db'); //fijarnos el nombre con que lo pone pablo.
+const { Op } = require("sequelize");
 
+async function buscaCliente(idcliente){
+    try{
+
+        const cliente = await Clientes.findOne({
+            attributes:['id', 'razon_social'],
+            where:{
+                id: idcliente
+            }
+        })
+        // console.log(cliente.dataValues);
+        return cliente.dataValues;
+    }
+    catch (error){
+        console.log(error)
+    }
+}
 
 function fechaContraHoy(fechaComprobar){
     let arrFecha = fechaComprobar.split('-');
@@ -174,5 +192,5 @@ module.exports={
     fraccionarApiGoogle,
     procesaGoogle,
     fechaContraHoy,
-    
+    buscaCliente,
 }
