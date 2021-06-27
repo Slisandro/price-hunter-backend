@@ -161,10 +161,7 @@ const subcategoria = [
   { nombre_subcategoria: "Frutas", categoriumId: 15 },
   { nombre_subcategoria: "Donuts", categoriumId: 16 },
   { nombre_subcategoria: "Facturería", categoriumId: 16 },
-  {
-    nombre_subcategoria: "Galletitas, alfajores y panes dulces",
-    categoriumId: 16,
-  },
+  { nombre_subcategoria: "Galletitas, alfajores y panes dulces", categoriumId: 16,},
   { nombre_subcategoria: "Panificados", categoriumId: 16 },
   { nombre_subcategoria: "Piononos, budines y madalenas", categoriumId: 16 },
   { nombre_subcategoria: "Sandwichería", categoriumId: 16 },
