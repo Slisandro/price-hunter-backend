@@ -28,7 +28,7 @@ async function logIn(req, res, next) {
                     expiresIn: datos.mc.expires_at
                 });
                 return res.json({
-                    usuario: usuarioGoogle.dataValues,
+                    user: usuarioGoogle.dataValues,
                     token: `${token} ${datos.mc.idpId}`
                 });
             }else{
@@ -36,7 +36,7 @@ async function logIn(req, res, next) {
                     expiresIn: authConfig.expires
                 });
                 return res.json({
-                    usuario: usuarioGoogle.dataValues,
+                    user: usuarioGoogle.dataValues,
                     token: token
                 });
             }
@@ -44,25 +44,6 @@ async function logIn(req, res, next) {
             res.status(500).send({ msg: "error en el server" })
         }
     }
-    // const client = new OAuth2Client(datos);
-
-    //------------------------------------------------------------------------------------------------//
-
-    // async function verify() {
-    //     const ticket = await client.verifyIdToken({
-    //         idToken: token,
-    //         audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
-    //         // Or, if multiple clients access the backend:
-    //         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
-    //     });
-    //     const payload = ticket.getPayload();
-    //     const userid = payload['sub'];
-    //     // If request specified a G Suite domain:
-    //     // const domain = payload['hd'];
-    // }
-    // verify().catch(console.error);
-
-    //------------------------------------------------------------------------------------------------//
 
     Usuarios.findOne({
         where: {

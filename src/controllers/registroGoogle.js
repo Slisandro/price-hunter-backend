@@ -1,8 +1,6 @@
 const { Usuarios } = require('../db');
-// const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
-// const authConfig = require('../../config/auth');
-// const {OAuth2Client} = require('google-auth-library');
+const bcrypt = require('bcrypt');
+const authConfig = require('../../config/auth');
 
 // ingreso de un usuario
 /*
@@ -19,6 +17,7 @@ email
 */
 async function registroGoogle(req, res, next) {
     const datos = req.body;
+    let password = await bcrypt.hash(datos.password, +authConfig.rounds)
     const user = req.user;
     console.log(user, datos)
     const usuario = await Usuarios.update({
@@ -29,13 +28,13 @@ async function registroGoogle(req, res, next) {
         banco: datos.banco,
         numero_de_cuenta: datos.numero_de_cuenta,
         fecha_de_nacimiento: datos.fecha_de_nacimiento,
-        password: datos.password
+        password: password
     }, {
         where: {
             id: user.id
         }
     })
-    res.send(usuario)
+    res.send({msg: "operación completada con éxito"})
 }
 
 
