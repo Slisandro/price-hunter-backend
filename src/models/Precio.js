@@ -25,10 +25,13 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
         },
         // id_desafio: { // ?
-        //     type: DataTypes.STRING,
+        //     type: DataTypes.INTEGER,
         // },
         // id_usuario: { // ?
-        //     type: DataTypes.STRING,
+        //     type: DataTypes.INTEGER,
         // }
+        // Id_Ciudad: { // ?
+        //     type: DataTypes.INTEGER,
+        // },
     });
 };

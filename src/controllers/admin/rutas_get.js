@@ -147,7 +147,7 @@ function subcategoriaById(req, res, next) {
 }
 
 function paisById(req, res, next) {
-  const { id } = req.params.toUpperCase();
+  const { id } = req.params;
   Paises.findAll({
     where: {
       regioneId: id,
@@ -162,7 +162,7 @@ function paisById(req, res, next) {
 }
 
 function ciudadById(req, res, next) {
-  const { id } = req.params.toUpperCase();
+  const { id } = req.params;
   Ciudad.findAll({
     where: {
       paiseCodigoAlfa: id,
