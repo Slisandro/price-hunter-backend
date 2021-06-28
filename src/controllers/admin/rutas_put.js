@@ -65,7 +65,7 @@ async function put_categoria(req, res, next) {
 
 // ________________ PUT SUBCATEGORIA ________________
 async function put_subcategoria(req, res, next) {
-  console.log(req.admin)
+  //console.log(req.admin)
   try {
     const { id, nombre_subcategoria, descripcion, categoriumId } = req.body;
     let parametros = {};
@@ -173,7 +173,7 @@ async function put_region(req, res, next) {
 
 // ________________ PUT CIUDAD ________________
 async function put_ciudad(req, res, next) {
-  console.log(req.admin)
+  //console.log(req.admin)
   try {
     const { id, ciudad, paiseCodigoAlfa } = req.body;
     let parametros = {};
