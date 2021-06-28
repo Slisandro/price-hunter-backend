@@ -73,7 +73,8 @@ async function subcategoria(req, res, next){
                   unidad_medida: umProd,
                   distanciaPunto: distancia.distancia_mts,
                   fecha: fechaFinal,
-                  cliente: nomCliente
+                  cliente: nomCliente,
+                  geoLatLong: [parseFloat(latPrecio), parseFloat(longPrecio) ]
                 }
                 preciosCerca.push(obj)
               }

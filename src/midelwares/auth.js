@@ -110,7 +110,7 @@ module.exports = {
    */
     auth_admin(req, res, next) {
 
-        //console.log(req.headers);// comprobamos los headers que vienen del req
+        // console.log(req);// comprobamos los headers que vienen del req
 
         // Comprobar que existe el token
         if (!req.headers.authorization) {
