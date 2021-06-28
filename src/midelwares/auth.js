@@ -54,6 +54,20 @@ module.exports = {
         }
     },
     /**
+     * La función comprueba el token para verificar que este sea un "usuario de google"
+     * @param {*} req request con el usuario
+     * @param {*} res respuesta con información del usuario (req.user)
+     * @param {*} next 
+     */
+    authGoogleUsers(req, res, next) {
+        let password = req.user.password;
+        if (password === "passwordGoogle") {
+         res.send({msg: "completar los datos del usuario antes de continuar"})   
+        }else{
+            next()
+        }
+    },
+    /**
     * La función comprueba el token para verificar que este sea un "cliente" real
     * @param {*} req request con el token del cliente
     * @param {*} res respuesta con información del cliente (req.cliente)

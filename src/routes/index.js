@@ -24,6 +24,8 @@ const listar_ciudades_cliente = require("./ciudades-form-cliente");
 const listar_sub_categorias = require("./listar-subcategorias");
 const logIn = require("./login");
 const  registroAdmin = require("./admin/registroAdmin");
+const  registroGoogle = require("./registroGoogle");
+
 
 const router = Router();
 
@@ -63,5 +65,8 @@ router.use("/getadmin", rutas_get);
 router.use("/putadmin", rutas_put);
 
 router.use("/", logIn)
+
+router.use("/", registroGoogle)
+
 
 module.exports = router;
