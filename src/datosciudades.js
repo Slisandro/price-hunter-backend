@@ -40,6 +40,8 @@ const ciudades =[
     {ciudad: "Luján de Cuyo", paiseCodigoAlfa: "ARG"},
     {ciudad: "Pinamar", paiseCodigoAlfa: "ARG"},
     {ciudad: "Olavarría", paiseCodigoAlfa: "ARG"},
+    {ciudad: "Azul", paiseCodigoAlfa: "ARG"},
+    {ciudad: "Espigas", paiseCodigoAlfa: "ARG"},
     {ciudad: "Santa Cruz de la Sierra", paiseCodigoAlfa: "BOL"},
     {ciudad: "El Alto", paiseCodigoAlfa: "BOL"},
     {ciudad: "La Paz", paiseCodigoAlfa: "BOL"},

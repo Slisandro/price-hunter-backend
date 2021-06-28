@@ -1,89 +1,154 @@
+const { radioLatLong} = require('../../config/funciones_publicas');
+
+
 const {
   Subcategoria,
   Productos,
   Precio,
-  Moneda,
-  Usuarios,
-  Ciudad,
-  Paises,
   Desafios,
-  Unidad_medida
+  Clientes
 } = require("../db");
 
-/*****************************************************************************/
-
-/* ruta de busqueda:
-http://localhost:3001/subcategoria/id_subcategoria?id=id_tipo_de _usuario&idUsuario=id_usuario*/
 /* ruta de ejemplo:
-http://localhost:3001/subcategoria/42?id=1&idUsuario=5*/
-
-/*****************************************************************************/
-
-
+http://localhost:3001/subcategoria?id=84&long=-60.315329999999996&lat=-36.9122268&dis=10000
+*/
 
 async function subcategoria(req, res, next){
+  const {id, lat, long, dis} = req.query;
 
-  try {
-
-    const {id} = req.params;
-  
-    const productos_array = await Subcategoria.findAll({
+  if (id, lat, long, dis){
+    Subcategoria.findOne({
+      attributes:['id'],
       where:{
-        id: id
+        id: id,
       },
-      attributes:[],
       include:{
         model: Productos,
-        attributes:['nombre', 'contenido_neto'],
-        include:[
-          {
-            model: Unidad_medida,
-            attributes:['codigo_unidad_medida'],
-          },
-          {
-            model: Desafios,
-            attributes:['nombre_desafio'],
-            include:{
+        attributes:['id', 'nombre', 'contenido_neto', 'unidadMedidaCodigoUnidadMedida'],
+        include:{
+          model: Desafios,
+          attributes:['id','nombre_desafio', 'clienteId'],
+          include:[
+            {
               model: Precio,
-              attributes:['precio'],            
+              attributes:['precio', 'createdAt', 'latitud', 'longitud', 'desafioId', 'ciudadId'],
+            },
+            {
+              model:Clientes, 
+              attributes:['id', 'razon_social']
             }
-            
+          ]
+        }
+      }
+
+    }).then((prodsSubCategoria)=>{
+      if(!prodsSubCategoria){
+        return res.send({ msg: 'no hay precios en esta selección' })
+      }else{
+        const preciosCerca = []
+        for (let x = 0; x< prodsSubCategoria.productos.length; x++){
+          for (let y = 0; y<prodsSubCategoria.productos[x].desafios.length; y++ ){
+            for (let z = 0; z <prodsSubCategoria.productos[x].desafios[y].precios.length; z++){
+            const latPrecio = prodsSubCategoria.productos[x].desafios[y].precios[z].latitud
+            const longPrecio = prodsSubCategoria.productos[x].desafios[y].precios[z].longitud
+            const distancia = radioLatLong(lat, long, latPrecio, longPrecio, dis)
+              if (distancia.distancia_mts <= dis) { 
+                const precioCerca = prodsSubCategoria.productos[x].desafios[y].precios[z].precio 
+                const fechaCaptura = prodsSubCategoria.productos[x].desafios[y].precios[z].createdAt 
+                const nomDesafio = prodsSubCategoria.productos[x].desafios[y].nombre_desafio
+                const nomProducto = prodsSubCategoria.productos[x].nombre
+                const cotenidoProd = prodsSubCategoria.productos[x].contenido_neto
+                const umProd = prodsSubCategoria.productos[x].unidadMedidaCodigoUnidadMedida
+                const nomCliente=prodsSubCategoria.productos[x].desafios[y].cliente.razon_social
+                const yearCaptura = fechaCaptura.getFullYear() *10000;
+                const monthCaptura = (fechaCaptura.getMonth()+1) *100; //getmonth asume diciembre como 11
+                const dayCaptura = fechaCaptura.getDate();  //getDate genera el numero del dia de la fecha
+                const fechaFinal  = yearCaptura + monthCaptura + dayCaptura
+
+                const obj = {
+                  precio: precioCerca,
+                  desafio: nomDesafio,
+                  producto: nomProducto,
+                  contenido_neto: cotenidoProd,
+                  unidad_medida: umProd,
+                  distanciaPunto: distancia.distancia_mts,
+                  fecha: fechaFinal,
+                  cliente: nomCliente,
+                  geoLatLong: [parseFloat(latPrecio), parseFloat(longPrecio) ]
+                }
+                preciosCerca.push(obj)
+              }
+            }
           }
-        ]
-        
+        }
+        return res.send(preciosCerca);
       }
     })
-
-    const productos_array_modificado = []; 
-    
-    productos_array.forEach(obj => {
-      
-      obj.productos.forEach((productoo)=>{
-        productoo.desafios.forEach((desafioo)=>{
-          desafioo.precios.forEach((precioo)=>{
-            productos_array_modificado.push({
-              precio: precioo.precio,
-              desafio: desafioo.nombre_desafio,
-              preoducto: productoo.nombre,
-              contenido_neto: productoo.contenido_neto,
-              unidad_medida: productoo.unidad_medida.codigo_unidad_medida
-            })
-          })
-        })
-      })
-
-    });
-
-    res.status(200).send(productos_array_modificado)
-
-
-
-  } catch (error) {
-    next(error);
+  }else{
+    return res.send({ msg: 'error en datos: id de subcategoría, latitud, longitud o distancia' })
   }
-
-
 };
+
+  // try {
+
+  //   const {id} = req.params;
+  
+  //   const productos_array = await Subcategoria.findAll({
+  //     where:{
+  //       id: id
+  //     },
+  //     attributes:[],
+  //     include:{
+  //       model: Productos,
+  //       attributes:['nombre', 'contenido_neto'],
+  //       include:[
+  //         {
+  //           model: Unidad_medida,
+  //           attributes:['codigo_unidad_medida'],
+  //         },
+  //         {
+  //           model: Desafios,
+  //           attributes:['nombre_desafio'],
+  //           include:{
+  //             model: Precio,
+  //             attributes:['precio'],            
+  //           }
+            
+  //         }
+  //       ]
+        
+  //     }
+  //   })
+
+  //   const productos_array_modificado = []; 
+    
+  //   productos_array.forEach(obj => {
+      
+  //     obj.productos.forEach((productoo)=>{
+  //       productoo.desafios.forEach((desafioo)=>{
+  //         desafioo.precios.forEach((precioo)=>{
+  //           productos_array_modificado.push({
+  //             precio: precioo.precio,
+  //             desafio: desafioo.nombre_desafio,
+  //             preoducto: productoo.nombre,
+  //             contenido_neto: productoo.contenido_neto,
+  //             unidad_medida: productoo.unidad_medida.codigo_unidad_medida
+  //           })
+  //         })
+  //       })
+  //     })
+
+  //   });
+
+  //   res.status(200).send(productos_array_modificado)
+
+
+
+  // } catch (error) {
+  //   next(error);
+  // }
+
+
 
 
 
