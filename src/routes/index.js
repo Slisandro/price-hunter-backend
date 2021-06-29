@@ -22,8 +22,12 @@ const rutas_put = require("./admin/rutas_admin_put.js");
 const listar_productos = require("../routes/listarproductos");
 const listar_ciudades_cliente = require("./ciudades-form-cliente");
 const listar_sub_categorias = require("./listar-subcategorias");
+const estadisticacliente = require("./estatisticas_cliente")
 const logIn = require("./login");
 const  registroAdmin = require("./admin/registroAdmin");
+
+const misdesafios = require("./misdesafios");
+
 const  registroGoogle = require("./registroGoogle");
 
 
@@ -47,6 +51,7 @@ router.use("/", crear_producto);
 router.use("/", precios);
 router.use("/", crear_desafio);
 router.use("/", detalle_desafio);
+router.use("/", estadisticacliente);
 //-----lista de productos para form cliente-----//
 router.use("/", listar_productos);
 //----------------------------------------------//
@@ -57,6 +62,10 @@ router.use("/", listar_ciudades_cliente);
 
 //-----lista de subcategorias para form cliente/Nuevo Producto-----//
 router.use("/", listar_sub_categorias);
+//----------------------------------------------//
+
+//-----lista de misdesafios para el panel cliente-----//
+router.use("/", misdesafios);
 //----------------------------------------------//
 
 router.use("/", registroAdmin)

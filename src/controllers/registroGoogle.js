@@ -1,7 +1,6 @@
 const { Usuarios } = require('../db');
 const bcrypt = require('bcrypt');
 const authConfig = require('../../config/auth');
-
 // ingreso de un usuario
 /*
 fecha_de_nacimiento,
@@ -16,25 +15,30 @@ email
 ----------
 */
 async function registroGoogle(req, res, next) {
-    const datos = req.body;
-    let password = await bcrypt.hash(datos.password, +authConfig.rounds)
-    const user = req.user;
-    console.log(user, datos)
-    const usuario = await Usuarios.update({
-        tipoUsuarioId: 1,
-        ciudadId: datos.ciudadId,
-        generoId: datos.generoId,
-        metodo_de_cobro: datos.metodo_de_cobro,
-        banco: datos.banco,
-        numero_de_cuenta: datos.numero_de_cuenta,
-        fecha_de_nacimiento: datos.fecha_de_nacimiento,
-        password: password
-    }, {
-        where: {
-            id: user.id
-        }
-    })
-    res.send({msg: "operación completada con éxito"})
+    try {
+        const datos = req.body;
+        const user = req.user;
+        let password = await bcrypt.hash(user.password, +authConfig.rounds);
+        // console.log(user, datos)
+        await Usuarios.update({
+            tipoUsuarioId: 1,
+            ciudadId: datos.ciudadId,
+            generoId: datos.generoId,
+            metodo_de_cobro: datos.metodo_de_cobro,
+            banco: datos.banco,
+            numero_de_cuenta: datos.numero_de_cuenta,
+            fecha_de_nacimiento: datos.fecha_de_nacimiento,
+            password: password
+        }, {
+            where: {
+                id: user.id
+            }
+        })
+        res.send({msg_ok: "operación completada con éxito"})
+    } catch (error) {
+        console.log(error)
+        res.send({msg: "error en los datos enviados"})
+    }
 }
 
 
