@@ -329,14 +329,59 @@ const desafios = [
     fecha_inicial: "21-06-10" ,
     fecha_final:  "21-12-31"
   },
+  // {
+  //   nombre_desafio: "canasta familiar sal" , 
+  //   descripcion_desafio: "comparte los precios con tu comunidad  para beneficio de todos" ,
+  //   productoId: 9 , 
+  //   clienteId: 1 , 
+  //   url_image: "https://ichef.bbci.co.uk/news/640/cpsprodpb/C894/production/_115784315_gettyimages-827818618.jpg" , 
+  //   fecha_inicial: "21-06-10" ,
+  //   fecha_final:  "21-12-31"
+  // },
+  // {
+  //   nombre_desafio: "finalizado 1" , 
+  //   descripcion_desafio: "comparte los precios con tu comunidad  para beneficio de todos" ,
+  //   productoId: 9 , 
+  //   clienteId: 1 , 
+  //   url_image: "https://ichef.bbci.co.uk/news/640/cpsprodpb/C894/production/_115784315_gettyimages-827818618.jpg" , 
+  //   fecha_inicial: "21-06-10" ,
+  //   fecha_final:  "21-06-12"
+  // },
   {
-    nombre_desafio: "canasta familiar sal" , 
+    nombre_desafio: "finalizado 2" , 
     descripcion_desafio: "comparte los precios con tu comunidad  para beneficio de todos" ,
     productoId: 9 , 
     clienteId: 1 , 
     url_image: "https://ichef.bbci.co.uk/news/640/cpsprodpb/C894/production/_115784315_gettyimages-827818618.jpg" , 
     fecha_inicial: "21-06-10" ,
-    fecha_final:  "21-12-31"
+    fecha_final:  "21-06-29"
+  },
+  {
+    nombre_desafio: "finalizado 3" , 
+    descripcion_desafio: "comparte los precios con tu comunidad  para beneficio de todos" ,
+    productoId: 9 , 
+    clienteId: 1 , 
+    url_image: "https://ichef.bbci.co.uk/news/640/cpsprodpb/C894/production/_115784315_gettyimages-827818618.jpg" , 
+    fecha_inicial: "21-06-10" ,
+    fecha_final:  "21-06-29"
+  },
+  {
+    nombre_desafio: "programado 1" , 
+    descripcion_desafio: "comparte los precios con tu comunidad  para beneficio de todos" ,
+    productoId: 9 , 
+    clienteId: 1 , 
+    url_image: "https://ichef.bbci.co.uk/news/640/cpsprodpb/C894/production/_115784315_gettyimages-827818618.jpg" , 
+    fecha_inicial: "21-07-10" ,
+    fecha_final:  "21-08-30"
+  },
+  {
+    nombre_desafio: "programado 2" , 
+    descripcion_desafio: "comparte los precios con tu comunidad  para beneficio de todos" ,
+    productoId: 9 , 
+    clienteId: 1 , 
+    url_image: "https://ichef.bbci.co.uk/news/640/cpsprodpb/C894/production/_115784315_gettyimages-827818618.jpg" , 
+    fecha_inicial: "21-08-10" ,
+    fecha_final:  "21-10-01"
   },
 
 ];
