@@ -72,7 +72,7 @@ async function put_subcategoria(req, res, next) {
     if (nombre_subcategoria.length > 0) {
       parametros.nombre_subcategoria = nombre_subcategoria;
     }
-    if (descripcion.length > 0) {
+    if (descripcion && descripcion.length > 0) {
       parametros.descripcion = descripcion;
     }
     if (categoriumId) {
