@@ -45,27 +45,33 @@ function procesaGoogle (arr){
     let nuevoArray =[]
     let tipoDato = '';
     if (arr.length){
+        // console.log('arrorig', arr)
+
         for (let x = 0; x < arr.length; x++){
-        let newName = cambiaCaracteres(arr[x].long_name).toLowerCase();
-        let newShortName = cambiaCaracteres(arr[x].short_name).toLowerCase();
-            if (arr[x].types[0] === 'country'){
-                tipoDato = 'pais'
-            }else if (arr[x].types[0] === 'administrative_area_level_1'){
-                tipoDato = 'nivel1'
-            }else if (arr[x].types[0] === 'administrative_area_level_2'){
-                tipoDato = 'nivel2'
-            }else if (arr[x].types[0] === 'locality'){
-                tipoDato = 'nivel3'
-            }
-            nuevoArray.push(
-                { 
-                    long_name: newName,
-                    short_name: newShortName,
-                    type: tipoDato
+            if(arr[x]){
+                let newName = cambiaCaracteres( arr[x].long_name).toLowerCase();
+                // console.log('separa',arr[x])
+                let newShortName = cambiaCaracteres(arr[x].short_name).toLowerCase();
+                if (arr[x] && arr[x].types[0] === 'country'){
+                    tipoDato = 'pais'
+                }else if (arr[x].types[0] === 'administrative_area_level_1'){
+                    tipoDato = 'nivel1'
+                }else if (arr[x].types[0] === 'administrative_area_level_2'){
+                    tipoDato = 'nivel2'
+                }else if (arr[x].types[0] === 'locality'){
+                    tipoDato = 'nivel3'
                 }
-            )
+                nuevoArray.push(
+                    { 
+                        long_name: newName,
+                        short_name: newShortName,
+                        type: tipoDato
+                    }
+                )
+            }
         }
     }
+    // console.log(nuevoArray);
     return nuevoArray;
 }
 
@@ -84,19 +90,22 @@ function fraccionarApiGoogle (objGoogle){
 }
 
 function cambiaCaracteres(palabra){
-    let nuevaPalabra = ''; 
-    if (palabra.length){
-        for(let x = 0; x < palabra.length; x++){
-        let objRemplaza = cambiaLetras.find(arg => arg.quitar === palabra[x]);
-            if (objRemplaza){
-                nuevaPalabra = nuevaPalabra + objRemplaza.poner;
-            }else{
-                nuevaPalabra = nuevaPalabra + palabra[x];
+    // console.log('cambiar', palabra)
+    if(palabra){
+        let nuevaPalabra = ''; 
+        if (palabra.length){
+            for(let x = 0; x < palabra.length; x++){
+            let objRemplaza = cambiaLetras.find(arg => arg.quitar === palabra[x]);
+                if (objRemplaza){
+                    nuevaPalabra = nuevaPalabra + objRemplaza.poner;
+                }else{
+                    nuevaPalabra = nuevaPalabra + palabra[x];
+                }
             }
         }
-    }
-    return nuevaPalabra;
-} 
+        
+        return nuevaPalabra;
+}   }
 
 
 
