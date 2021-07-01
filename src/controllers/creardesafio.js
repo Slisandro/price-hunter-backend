@@ -25,12 +25,17 @@ async function Post_Crear_Desafio(req,res,next){
             return res.status(200).json({msg:"El/Los tipos de datos de los valores son incorrectos."})
         }
 
+        const fecha_inicial_nueva = fechainicial.slice(2,10)
+        const fehca_final_nueva = fechafinal.slice(2,10)
+        console.log(fecha_inicial_nueva)
+        console.log(fehca_final_nueva)
+
         const desafio = await Desafios.findOrCreate({
             where:{
                 nombre_desafio: nombre,
                 descripcion_desafio: descripcion,
-                fecha_inicial: fechainicial,
-                fecha_final: fechafinal,
+                fecha_inicial: fecha_inicial_nueva,
+                fecha_final: fehca_final_nueva,
                 url_image: img,
                 clienteId: id_cliente,
                 productoId: id_producto,
