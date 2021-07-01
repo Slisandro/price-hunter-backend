@@ -10,16 +10,30 @@ function EstadisticaCliente (req, res, next){
     if (idCliente, idDesafio){
         // return res.send([idCliente, idDesafio])
         Desafios.findOne({
-            attributes:['id', 'nombre_desafio', 'descripcion_desafio', 'fecha_inicial','fecha_final'],
-            include:{
-                model:Ciudad,
-                through: {attributes:['puntos_ganar', 'cantidad_precios']},
-                include:{
-                    model: Precio,
-                    attributes: {exlude:['id', 'updatedAt', 'desafioId']}
+            attributes:['id', 'nombre_desafio', 'url_image', 'descripcion_desafio', 'fecha_inicial','fecha_final'],
+            where:{
+                id: idDesafio
+            },
+            include:[
+                {
+                    model:Ciudad,
+                    // through: {attributes:['puntos_ganar', 'cantidad_precios', 'desafioId']},
+                    include:{
+                        model: Precio,
+                        where:{
+                            desafioId: idDesafio
+                        },
+                        attributes: {exlude:['id', 'updatedAt', 'desafioId']},  
+                    }
+                },
+                {
+                    model:Productos,
+                    attributes:['nombre', 'contenido_neto', 'unidadMedidaCodigoUnidadMedida']
                 }
-            }
+            ]
+            
         }).then((estadistica)=>{
+            // return res.send(estadistica)
             if (!estadistica){
                 return res.send({msg: 'no hay datos para esta consulta'})
             }else{
@@ -28,6 +42,8 @@ function EstadisticaCliente (req, res, next){
                     descripcion_desafio: estadistica.descripcion_desafio, 
                     fecha_inicial: estadistica.fecha_inicial,
                     fecha_final: estadistica.fecha_final,
+                    imagen: estadistica.url_image,
+                    nombre_producto: estadistica.producto.nombre + ' x ' + estadistica.producto.contenido_neto +' '+ estadistica.producto.unidadMedidaCodigoUnidadMedida
                 }
                 const ciudadesDesafio=[];
                 const preciosDesafio =[];
@@ -49,7 +65,8 @@ function EstadisticaCliente (req, res, next){
                         let fechaPrecioFin  = yearPrecio + monthPrecio + dayPrecio
 
                         preciosDesafio.push({
-                            ciudadId: estadistica.ciudads[x].precios[y].id,
+                            ciudadId: estadistica.ciudads[x].precios[y].ciudadId, //Aqui esta el puto problema
+                            ciudad: estadistica.ciudads[x].ciudad,
                             latitud: parseFloat(estadistica.ciudads[x].precios[y].latitud),
                             longitud: parseFloat(estadistica.ciudads[x].precios[y].longitud),
                             fecha: fechaPrecioFin,

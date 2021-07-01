@@ -42,6 +42,8 @@ router.get("/tipo_usuario", tipo_usuario);
 // Ruta: http://localhost:3001/getadmin/tipo_usuario
 router.get("/productos", productos);
 // Ruta: http://localhost:3001/getadmin/productos
+router.get("/genero", genero);
+// Ruta: http://localhost:3001/getadmin/genero
 router.get("/categoria/:id", categoriaById);
 // Ruta: http://localhost:3001/getadmin/categoria/:id
 router.get("/subcategoria/:id", subcategoriaById);
@@ -50,5 +52,6 @@ router.get("/pais/:id", paisById);
 // Ruta: http://localhost:3001/getadmin/pais/:id
 router.get("/ciudad/:id", ciudadById);
 // Ruta: http://localhost:3001/getadmin/ciudad/:id
+
 
 module.exports = router;

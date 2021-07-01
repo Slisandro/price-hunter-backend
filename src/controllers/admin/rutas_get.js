@@ -116,6 +116,15 @@ function productos(req, res, next) {
     });
 }
 
+function genero(req, res, next) {
+  Generos.findAll()
+    .then((r) => {
+      res.send(r);
+    })
+    .catch((error) => {
+      next(error);
+    });
+}
 function categoriaById(req, res, next) {
   const { id } = req.params;
   Categoria.findAll({
@@ -191,4 +200,5 @@ module.exports = {
   subcategoriaById,
   paisById,
   ciudadById,
+  genero
 };
