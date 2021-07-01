@@ -58,10 +58,13 @@ async function Misdesafios(req, res, next) {
                     }
                 })
                 if(  obj.orden!=="undefined" && obj.orden!=="" ){
+                    console.log("entre 1")///
                     if( obj.orden==="asc" ){
+                        console.log("entre 2")///
                         desafios_filter.sort((a,b)=>{
                             return a.fecha_final_desafio - b.fecha_final_desafio
                         })
+                        console.log(desafios_filter)///
                         return res.send(desafios_filter);
                     }else{
                         desafios_filter.sort((a,b)=>{
@@ -81,7 +84,24 @@ async function Misdesafios(req, res, next) {
                         desafios_filter.push(desafio);
                     }
                 })
-                return res.send(desafios_filter);
+                if(  obj.orden!=="undefined" && obj.orden!=="" ){
+                    console.log("entre 1")///
+                    if( obj.orden==="asc" ){
+                        console.log("entre 2")///
+                        desafios_filter.sort((a,b)=>{
+                            return a.fecha_final_desafio - b.fecha_final_desafio
+                        })
+                        console.log(desafios_filter)///
+                        return res.send(desafios_filter);
+                    }else{
+                        desafios_filter.sort((a,b)=>{
+                            return b.fecha_final_desafio - a.fecha_final_desafio
+                        })
+                        return res.send(desafios_filter);
+                    }
+                }else{
+                    return res.send(desafios_filter);
+                }
             }
 
             if( obj.estado==="programados" ){
@@ -90,7 +110,24 @@ async function Misdesafios(req, res, next) {
                         desafios_filter.push(desafio);
                     }
                 })
-                return res.send(desafios_filter);
+                if(  obj.orden!=="undefined" && obj.orden!=="" ){
+                    console.log("entre 1")///
+                    if( obj.orden==="asc" ){
+                        console.log("entre 2")///
+                        desafios_filter.sort((a,b)=>{
+                            return a.fecha_final_desafio - b.fecha_final_desafio
+                        })
+                        console.log(desafios_filter)///
+                        return res.send(desafios_filter);
+                    }else{
+                        desafios_filter.sort((a,b)=>{
+                            return b.fecha_final_desafio - a.fecha_final_desafio
+                        })
+                        return res.send(desafios_filter);
+                    }
+                }else{
+                    return res.send(desafios_filter);
+                }
             }
 
 
