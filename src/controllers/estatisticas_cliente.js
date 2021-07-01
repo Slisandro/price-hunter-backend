@@ -11,12 +11,18 @@ function EstadisticaCliente (req, res, next){
         // return res.send([idCliente, idDesafio])
         Desafios.findOne({
             attributes:['id', 'nombre_desafio', 'url_image', 'descripcion_desafio', 'fecha_inicial','fecha_final'],
+            where:{
+                id: idDesafio
+            },
             include:[
                 {
                     model:Ciudad,
-                    through: {attributes:['puntos_ganar', 'cantidad_precios']},
+                    // through: {attributes:['puntos_ganar', 'cantidad_precios', 'desafioId']},
                     include:{
                         model: Precio,
+                        where:{
+                            desafioId: idDesafio
+                        },
                         attributes: {exlude:['id', 'updatedAt', 'desafioId']},  
                     }
                 },
@@ -59,7 +65,7 @@ function EstadisticaCliente (req, res, next){
                         let fechaPrecioFin  = yearPrecio + monthPrecio + dayPrecio
 
                         preciosDesafio.push({
-                            ciudadId: estadistica.ciudads[x].precios[y].id,
+                            ciudadId: estadistica.ciudads[x].precios[y].ciudadId, //Aqui esta el puto problema
                             ciudad: estadistica.ciudads[x].ciudad,
                             latitud: parseFloat(estadistica.ciudads[x].precios[y].latitud),
                             longitud: parseFloat(estadistica.ciudads[x].precios[y].longitud),
