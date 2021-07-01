@@ -1,3 +1,4 @@
+
 const {
   Paises,
   Regiones,
@@ -125,6 +126,11 @@ function genero(req, res, next) {
       next(error);
     });
 }
+
+function auth(req, res, next) {
+ res.send("true")
+}
+
 function categoriaById(req, res, next) {
   const { id } = req.params;
   Categoria.findAll({
@@ -200,5 +206,6 @@ module.exports = {
   subcategoriaById,
   paisById,
   ciudadById,
-  genero
+  genero,
+  auth
 };

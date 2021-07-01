@@ -18,9 +18,11 @@ const {
   subcategoriaById,
   paisById,
   ciudadById,
+  auth
 } = require("../../controllers/admin/rutas_get.js");
 const { Router } = require("express");
 const router = Router();
+const { auth_admin } = require('../../midelwares/auth')
 
 router.get("/familia", familia);
 // Ruta: http://localhost:3001/getadmin/familia
@@ -44,6 +46,8 @@ router.get("/productos", productos);
 // Ruta: http://localhost:3001/getadmin/productos
 router.get("/genero", genero);
 // Ruta: http://localhost:3001/getadmin/genero
+router.get("/auth", auth_admin, auth);
+// Ruta: http://localhost:3001/getadmin/auth
 router.get("/categoria/:id", categoriaById);
 // Ruta: http://localhost:3001/getadmin/categoria/:id
 router.get("/subcategoria/:id", subcategoriaById);
