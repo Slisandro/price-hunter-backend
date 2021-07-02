@@ -22,6 +22,7 @@ const rutas_put = require("./admin/rutas_admin_put.js");
 const listar_productos = require("../routes/listarproductos");
 const listar_ciudades_cliente = require("./ciudades-form-cliente");
 const listar_sub_categorias = require("./listar-subcategorias");
+const editar_desafio_cliente = require("./editdesafio");
 const estadisticacliente = require("./estatisticas_cliente")
 const logIn = require("./login");
 const  registroAdmin = require("./admin/registroAdmin");
@@ -66,6 +67,10 @@ router.use("/", listar_sub_categorias);
 
 //-----lista de misdesafios para el panel cliente-----//
 router.use("/", misdesafios);
+//----------------------------------------------//
+
+//-----editar desafio para el panel cliente-----//
+router.use("/", editar_desafio_cliente);
 //----------------------------------------------//
 
 router.use("/", registroAdmin)
