@@ -6,7 +6,7 @@ const { Op } = require("sequelize");
 
 async function EditDesafio (req, res, next){
    
-    const id_cliente = 1;
+    const id_cliente = req.cliente.id
     const id_desafio = req.body.id;
     const fecha_final_nueva = req.body.fechafinal.slice(2,10)
     const desclipcion_nueva = req.body.descripcion
